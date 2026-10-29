@@ -82,6 +82,11 @@ export const AppProvider = ({ children }) => {
     showToast(`Clocked out at ${nowTime}. Timesheet registered.`, 'info');
   };
 
+  const logout = () => {
+    setIsClockedIn(false);
+    showToast('Secure session terminated. Redirecting to platform login...', 'info');
+  };
+
   const addEmployee = (newEmpData) => {
     const newEmp = {
       id: `emp-${Date.now()}`,
@@ -147,6 +152,7 @@ export const AppProvider = ({ children }) => {
         isClockedIn,
         handleClockIn,
         handleClockOut,
+        logout,
         clockInModalOpen,
         setClockInModalOpen,
         isSidebarMobileOpen,

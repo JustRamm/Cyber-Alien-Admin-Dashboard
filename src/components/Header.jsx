@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import '../styles/Header.css';
 
 export const Header = () => {
+  const navigate = useNavigate();
   const {
     currentUser,
     studioStats,
@@ -10,7 +12,8 @@ export const Header = () => {
     setClockInModalOpen,
     isSidebarMobileOpen,
     setIsSidebarMobileOpen,
-    showToast
+    showToast,
+    logout
   } = useApp();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,6 +27,11 @@ export const Header = () => {
     if (searchTerm.trim()) {
       showToast(`Query telemetry initiated: "${searchTerm}"`, 'info');
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
   };
 
   return (
@@ -88,9 +96,16 @@ export const Header = () => {
           <span className="notification-dot"></span>
         </button>
 
-        <div className="header-avatar-btn" title={`${currentUser.name} (${currentUser.node})`}>
-          <img src={currentUser.avatar} alt={currentUser.name} className="header-avatar-img" />
-        </div>
+        <button
+          type="button"
+          className="header-logout-btn"
+          onClick={handleLogout}
+          title={`Logout (${currentUser.name})`}
+          aria-label="Logout"
+        >
+          <span className="material-symbols-outlined logout-icon">logout</span>
+          <span className="logout-text">LOGOUT</span>
+        </button>
       </div>
     </header>
   );

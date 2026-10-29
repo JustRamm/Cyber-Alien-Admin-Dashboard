@@ -163,5 +163,13 @@
   .table-responsive-container table {
     min-width: 600px;
   }
+
+  .header-logout-btn .logout-text {
+    display: none;
+  }
+
+  .header-logout-btn {
+    padding: 8px 10px;
+  }
 }
 

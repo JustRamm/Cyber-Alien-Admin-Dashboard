@@ -1,9 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import '../styles/Sidebar.css';
 
 export const Sidebar = () => {
+  const navigate = useNavigate();
   const {
     currentUser,
     currentRole,
@@ -11,7 +12,8 @@ export const Sidebar = () => {
     isSidebarMobileOpen,
     setIsSidebarMobileOpen,
     tasks,
-    inquiries
+    inquiries,
+    logout
   } = useApp();
 
   const pendingInquiriesCount = inquiries.length;
@@ -21,6 +23,12 @@ export const Sidebar = () => {
     if (setIsSidebarMobileOpen) {
       setIsSidebarMobileOpen(false);
     }
+  };
+
+  const handleLogout = () => {
+    closeSidebarMobile();
+    logout();
+    navigate('/login');
   };
 
   return (
@@ -118,17 +126,17 @@ export const Sidebar = () => {
                 </div>
               </NavLink>
 
-              <div className="nav-section-title">QUICK ACCESS</div>
-              <NavLink
-                to="/login"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
+              <div className="nav-section-title">SESSION</div>
+              <button
+                type="button"
+                className="nav-item-link sidebar-logout-action"
+                onClick={handleLogout}
               >
                 <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">lock_open</span>
-                  <span>Platform Login</span>
+                  <span className="material-symbols-outlined nav-icon" style={{ color: 'var(--color-secondary)' }}>logout</span>
+                  <span style={{ color: 'var(--color-secondary)', fontWeight: 600 }}>Logout</span>
                 </div>
-              </NavLink>
+              </button>
             </nav>
           ) : (
             <nav className="sidebar-nav">
@@ -188,6 +196,18 @@ export const Sidebar = () => {
                   <span>Profile & Skill KPIs</span>
                 </div>
               </NavLink>
+
+              <div className="nav-section-title">SESSION</div>
+              <button
+                type="button"
+                className="nav-item-link sidebar-logout-action"
+                onClick={handleLogout}
+              >
+                <div className="nav-link-left">
+                  <span className="material-symbols-outlined nav-icon" style={{ color: 'var(--color-secondary)' }}>logout</span>
+                  <span style={{ color: 'var(--color-secondary)', fontWeight: 600 }}>Logout</span>
+                </div>
+              </button>
             </nav>
           )}
         </div>
@@ -204,6 +224,15 @@ export const Sidebar = () => {
                 </div>
               </div>
             </div>
+            <button
+              type="button"
+              className="sidebar-quick-logout-btn"
+              onClick={handleLogout}
+              title="Logout / Terminate Session"
+              aria-label="Logout"
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>logout</span>
+            </button>
           </div>
 
           <button
