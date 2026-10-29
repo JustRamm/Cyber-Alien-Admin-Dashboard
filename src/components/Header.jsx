@@ -7,6 +7,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const {
     currentUser,
+    currentRole,
     currentPreset,
     studioStats,
     isClockedIn,
@@ -98,19 +99,28 @@ export const Header = () => {
         </form>
       </div>
 
-      {/* Right side: Clock-in CTA, Notifications, Profile Avatar Dropdown */}
+      {/* Right side: Clock-in CTA (Admin only), Notifications, Profile Avatar Dropdown */}
       <div className="header-right">
-        <button
-          type="button"
-          className={`clock-punch-header-btn ${isClockedIn ? 'clocked-in' : 'clocked-out'}`}
-          onClick={() => setClockInModalOpen(true)}
-          title="Open Geofence & Punch Verification dialog"
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
-            {isClockedIn ? 'radar' : 'fingerprint'}
-          </span>
-          <span>{isClockedIn ? 'Geofence Active' : 'Punch Clock-In'}</span>
-        </button>
+        {currentRole === 'ADMIN' ? (
+          <button
+            type="button"
+            className={`clock-punch-header-btn ${isClockedIn ? 'clocked-in' : 'clocked-out'}`}
+            onClick={() => setClockInModalOpen(true)}
+            title="Open Geofence & Punch Verification dialog"
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
+              {isClockedIn ? 'radar' : 'fingerprint'}
+            </span>
+            <span>{isClockedIn ? 'Geofence Active' : 'Punch Clock-In'}</span>
+          </button>
+        ) : (
+          <div className="header-specialist-sprint-pill">
+            <span className="live-dot pulse" style={{ width: 6, height: 6, backgroundColor: '#10b981' }}></span>
+            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.04em' }}>
+              {currentUser.activeSprint || 'SPRINT ACTIVE'}
+            </span>
+          </div>
+        )}
 
         {/* Interactive Notifications Trigger & Flyout */}
         <div className="header-notifications-container" ref={notifRef}>

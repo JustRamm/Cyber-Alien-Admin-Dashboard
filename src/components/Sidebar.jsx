@@ -49,7 +49,7 @@ export const Sidebar = () => {
           </div>
 
           {/* Navigation Links List */}
-          {currentRole === 'ADMIN' || currentRole === 'OPERATIONS' || currentRole === 'CREATIVE' ? (
+          {currentRole === 'ADMIN' ? (
             <nav className="sidebar-nav-list">
               <NavLink
                 to="/admin/mission-control"
@@ -59,6 +59,18 @@ export const Sidebar = () => {
                 <div className="nav-item-content">
                   <span className="material-symbols-outlined nav-item-icon">grid_view</span>
                   <span className="nav-item-label">Dashboard</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/admin/attendance"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">radar</span>
+                  <span className="nav-item-label">Attendance & Radar</span>
                 </div>
                 <span className="nav-active-dot"></span>
               </NavLink>
@@ -83,18 +95,6 @@ export const Sidebar = () => {
                 <div className="nav-item-content">
                   <span className="material-symbols-outlined nav-item-icon">mark_email_unread</span>
                   <span className="nav-item-label">Proposals & Inquiries</span>
-                </div>
-                <span className="nav-active-dot"></span>
-              </NavLink>
-
-              <NavLink
-                to="/admin/attendance"
-                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-item-content">
-                  <span className="material-symbols-outlined nav-item-icon">account_balance_wallet</span>
-                  <span className="nav-item-label">Financials & Invoices</span>
                 </div>
                 <span className="nav-active-dot"></span>
               </NavLink>
@@ -162,30 +162,6 @@ export const Sidebar = () => {
               </NavLink>
 
               <NavLink
-                to="/portal/attendance"
-                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-item-content">
-                  <span className="material-symbols-outlined nav-item-icon">account_balance_wallet</span>
-                  <span className="nav-item-label">Timesheets & Punches</span>
-                </div>
-                <span className="nav-active-dot"></span>
-              </NavLink>
-
-              <NavLink
-                to="/portal/leaves"
-                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-item-content">
-                  <span className="material-symbols-outlined nav-item-icon">mark_email_unread</span>
-                  <span className="nav-item-label">Leave & Time-Off</span>
-                </div>
-                <span className="nav-active-dot"></span>
-              </NavLink>
-
-              <NavLink
                 to="/admin/personnel"
                 className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeSidebarMobile}
@@ -205,6 +181,18 @@ export const Sidebar = () => {
                 <div className="nav-item-content">
                   <span className="material-symbols-outlined nav-item-icon">inventory_2</span>
                   <span className="nav-item-label">Assets & Deliverables</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/portal/leaves"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">date_range</span>
+                  <span className="nav-item-label">Leave & Time-Off</span>
                 </div>
                 <span className="nav-active-dot"></span>
               </NavLink>

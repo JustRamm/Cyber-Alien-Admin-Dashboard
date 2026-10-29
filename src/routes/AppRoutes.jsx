@@ -24,7 +24,10 @@ import { NotificationsCenter } from '../screens/NotificationsCenter';
 
 export const AppRoutes = () => {
   const { currentPreset, currentRole } = useApp();
-  const defaultLanding = currentPreset?.defaultRoute || (currentRole === 'ADMIN' ? '/admin/mission-control' : '/portal/home');
+  const isDefaultAdminRoute = currentPreset?.defaultRoute?.startsWith('/admin');
+  const defaultLanding = currentRole === 'ADMIN'
+    ? (currentPreset?.defaultRoute || '/admin/mission-control')
+    : (isDefaultAdminRoute ? '/portal/home' : (currentPreset?.defaultRoute || '/portal/home'));
 
   return (
     <Routes>
@@ -38,10 +41,16 @@ export const AppRoutes = () => {
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/setup-wizard" element={<FirstLoginSetup />} />
 
-      {/* Command Suite (Admin Core) */}
-      <Route path="/admin/mission-control" element={<AdminMissionControl />} />
+      {/* Command Suite (Admin Core - Only Admin gets Geofence Radar & Mission Control) */}
+      <Route
+        path="/admin/mission-control"
+        element={currentRole === 'ADMIN' ? <AdminMissionControl /> : <Navigate to="/portal/home" replace />}
+      />
       <Route path="/admin/operations" element={<StudioOperationsDashboard />} />
-      <Route path="/admin/attendance" element={<AttendanceGeolocationCommand />} />
+      <Route
+        path="/admin/attendance"
+        element={currentRole === 'ADMIN' ? <AttendanceGeolocationCommand /> : <Navigate to="/portal/home" replace />}
+      />
       <Route path="/admin/personnel" element={<PersonnelDirectory />} />
       <Route path="/admin/employee/:id" element={<EmployeeDetailControl />} />
 
