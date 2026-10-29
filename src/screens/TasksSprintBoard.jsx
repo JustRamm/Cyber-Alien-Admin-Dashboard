@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import '../styles/TasksSprintBoard.css';
 
 export const TasksSprintBoard = () => {
+  const navigate = useNavigate();
   const {
     tasks,
     projects,
     updateTaskStatus,
+    deleteTask,
+    canAssignTasks,
+    canDeleteTasks,
+    currentRole,
     setIsNewTaskModalOpen,
     setIsNewProjectModalOpen,
     showToast
@@ -123,8 +129,42 @@ export const TasksSprintBoard = () => {
                   <div className="kanban-card-title">{task.title}</div>
 
                   <div className="kanban-card-footer">
-                    <span>{task.assignedTo}</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <span style={{ fontWeight: 600 }}>{task.assignedTo}</span>
+                      {task.role && (
+                        <span style={{ fontSize: '9px', padding: '1px 5px', borderRadius: 4, background: 'var(--color-surface-container)', color: 'var(--color-on-surface-variant)', fontWeight: 700 }}>
+                          {task.role.split('_')[0]}
+                        </span>
+                      )}
+                    </div>
+
                     <div className="kanban-move-group">
+                      <button
+                        type="button"
+                        className="kanban-move-btn"
+                        onClick={() => navigate(`/portal/discussions?project=${encodeURIComponent(task.project)}`)}
+                        title={`Discuss in #${task.project} Chatroom`}
+                        style={{ color: 'var(--color-secondary)' }}
+                      >
+                        <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>chat</span>
+                      </button>
+
+                      {canDeleteTasks && (
+                        <button
+                          type="button"
+                          className="kanban-move-btn"
+                          onClick={() => {
+                            if (window.confirm(`Delete task "${task.title}"?`)) {
+                              deleteTask(task.id);
+                            }
+                          }}
+                          title="Delete Ticket (Admin Only)"
+                          style={{ color: 'var(--color-error)' }}
+                        >
+                          <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>delete_outline</span>
+                        </button>
+                      )}
+
                       {col.key !== 'BACKLOG' && (
                         <button
                           type="button"

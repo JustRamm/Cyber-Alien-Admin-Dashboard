@@ -12,6 +12,7 @@ export const Header = () => {
     studioStats,
     isClockedIn,
     setClockInModalOpen,
+    setIsClockOutModalOpen,
     isSidebarMobileOpen,
     setIsSidebarMobileOpen,
     showToast,
@@ -101,26 +102,28 @@ export const Header = () => {
 
       {/* Right side: Clock-in CTA (Admin only), Notifications, Profile Avatar Dropdown */}
       <div className="header-right">
-        {currentRole === 'ADMIN' ? (
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          {currentRole !== 'ADMIN' && (
+            <div className="header-specialist-sprint-pill">
+              <span className="live-dot pulse" style={{ width: 6, height: 6, backgroundColor: '#10b981' }}></span>
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.04em' }}>
+                {currentUser.activeSprint || 'SPRINT ACTIVE'}
+              </span>
+            </div>
+          )}
+
           <button
             type="button"
             className={`clock-punch-header-btn ${isClockedIn ? 'clocked-in' : 'clocked-out'}`}
-            onClick={() => setClockInModalOpen(true)}
-            title="Open Geofence & Punch Verification dialog"
+            onClick={() => (isClockedIn ? setIsClockOutModalOpen(true) : setClockInModalOpen(true))}
+            title={isClockedIn ? 'End daily shift & submit daily work log' : 'Punch in & start daily shift'}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
-              {isClockedIn ? 'radar' : 'fingerprint'}
+              {isClockedIn ? 'logout' : 'login'}
             </span>
-            <span>{isClockedIn ? 'Geofence Active' : 'Punch Clock-In'}</span>
+            <span>{isClockedIn ? 'Clock Out & Log' : 'Punch Clock-In'}</span>
           </button>
-        ) : (
-          <div className="header-specialist-sprint-pill">
-            <span className="live-dot pulse" style={{ width: 6, height: 6, backgroundColor: '#10b981' }}></span>
-            <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.04em' }}>
-              {currentUser.activeSprint || 'SPRINT ACTIVE'}
-            </span>
-          </div>
-        )}
+        </div>
 
         {/* Interactive Notifications Trigger & Flyout */}
         <div className="header-notifications-container" ref={notifRef}>

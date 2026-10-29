@@ -5,6 +5,7 @@ import { AppRoutes } from './routes/AppRoutes';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { ClockInModal } from './components/ClockInModal';
+import { ClockOutModal } from './components/ClockOutModal';
 import { NewTaskModal } from './components/NewTaskModal';
 import { NewProjectModal } from './components/NewProjectModal';
 import './styles/global.css';
@@ -51,8 +52,9 @@ const AppLayout = () => {
         </div>
       )}
 
-      {/* Global Interactive Clock-In Verification Modal */}
+      {/* Global Interactive Clock-In & Clock-Out Verification Modals */}
       <ClockInModal />
+      <ClockOutModal />
 
       {/* Global Interactive Task & Project Creation Modals */}
       <NewTaskModal />

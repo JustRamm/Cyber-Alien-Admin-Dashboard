@@ -88,6 +88,18 @@ export const Sidebar = () => {
               </NavLink>
 
               <NavLink
+                to="/portal/discussions"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">forum</span>
+                  <span className="nav-item-label">Project Chatrooms</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
                 to="/admin/operations"
                 className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeSidebarMobile}
@@ -157,6 +169,18 @@ export const Sidebar = () => {
                 <div className="nav-item-content">
                   <span className="material-symbols-outlined nav-item-icon">grid_on</span>
                   <span className="nav-item-label">Projects</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/portal/discussions"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">forum</span>
+                  <span className="nav-item-label">Project Chatrooms</span>
                 </div>
                 <span className="nav-active-dot"></span>
               </NavLink>

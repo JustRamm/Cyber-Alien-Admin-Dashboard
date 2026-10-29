@@ -21,6 +21,7 @@ import { AttendanceTimesheets } from '../screens/AttendanceTimesheets';
 import { LeaveManagement } from '../screens/LeaveManagement';
 import { EmployeeProfileKPIs } from '../screens/EmployeeProfileKPIs';
 import { TasksSprintBoard } from '../screens/TasksSprintBoard';
+import { ProjectChatrooms } from '../screens/ProjectChatrooms';
 import { NotificationsCenter } from '../screens/NotificationsCenter';
 
 export const AppRoutes = () => {
@@ -63,6 +64,10 @@ export const AppRoutes = () => {
       <Route path="/portal/leaves" element={<LeaveManagement />} />
       <Route path="/portal/profile" element={<EmployeeProfileKPIs />} />
       <Route path="/portal/tasks" element={<TasksSprintBoard />} />
+      <Route path="/portal/discussions" element={<ProjectChatrooms />} />
+      <Route path="/portal/chatrooms" element={<Navigate to="/portal/discussions" replace />} />
+      <Route path="/admin/discussions" element={<ProjectChatrooms />} />
+      <Route path="/discussions" element={<ProjectChatrooms />} />
 
       {/* Notifications Center */}
       <Route path="/notifications" element={<NotificationsCenter />} />

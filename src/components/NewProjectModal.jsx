@@ -8,7 +8,9 @@ export const NewProjectModal = () => {
     isNewProjectModalOpen,
     setIsNewProjectModalOpen,
     employees,
-    addProject
+    addProject,
+    canCreateProjects,
+    currentRole
   } = useApp();
 
   const [title, setTitle] = useState('');
@@ -54,6 +56,11 @@ export const NewProjectModal = () => {
     e.preventDefault();
     if (!title.trim() || !client.trim()) return;
 
+    if (!canCreateProjects) {
+      alert('Only Admin and Sales have permissions to initialize new client projects.');
+      return;
+    }
+
     addProject({
       title: title.trim(),
       client: client.trim(),
@@ -95,6 +102,13 @@ export const NewProjectModal = () => {
 
         {/* Form Body */}
         <form onSubmit={handleSubmit} id="new-project-form" className="modal-body">
+          {!canCreateProjects && (
+            <div style={{ padding: '10px 14px', borderRadius: 8, background: 'rgba(185, 5, 56, 0.08)', border: '1px solid rgba(185, 5, 56, 0.25)', color: '#b90538', fontSize: '12px', fontWeight: 600, marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>shield</span>
+              <span><strong>RBAC Policy:</strong> As a {currentRole}, project creation is read-only. Client engagements and project initialization are managed by Admin and Sales.</span>
+            </div>
+          )}
+
           {/* Project Title & Client Name */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div className="form-group">
@@ -248,9 +262,11 @@ export const NewProjectModal = () => {
             type="submit"
             form="new-project-form"
             className="btn-modal-submit"
+            disabled={!canCreateProjects}
+            style={!canCreateProjects ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
           >
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#B90538' }}></span>
-            <span>LAUNCH PROJECT →</span>
+            <span>{canCreateProjects ? 'LAUNCH PROJECT →' : 'ADMIN / SALES ONLY'}</span>
           </button>
         </div>
       </div>

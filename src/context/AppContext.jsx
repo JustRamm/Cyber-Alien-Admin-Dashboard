@@ -7,7 +7,9 @@ import {
   INITIAL_TASKS,
   INITIAL_LEAVE_BALANCES,
   PRESET_ROLES,
-  INITIAL_NOTIFICATIONS
+  INITIAL_NOTIFICATIONS,
+  INITIAL_PROJECT_CHATS,
+  INITIAL_DAILY_WORK_LOGS
 } from '../data/mockData';
 
 const AppContext = createContext(null);
@@ -23,10 +25,13 @@ export const AppProvider = ({ children }) => {
   const [tasks, setTasks] = useState(INITIAL_TASKS);
   const [leaveBalances, setLeaveBalances] = useState(INITIAL_LEAVE_BALANCES);
   const [notifications, setNotifications] = useState(INITIAL_NOTIFICATIONS);
+  const [projectChats, setProjectChats] = useState(INITIAL_PROJECT_CHATS);
+  const [dailyWorkLogs, setDailyWorkLogs] = useState(INITIAL_DAILY_WORK_LOGS);
 
   // Modals state
   const [isClockedIn, setIsClockedIn] = useState(true);
   const [clockInModalOpen, setClockInModalOpen] = useState(false);
+  const [isClockOutModalOpen, setIsClockOutModalOpen] = useState(false);
   const [isSidebarMobileOpen, setIsSidebarMobileOpen] = useState(false);
   const [isNewTaskModalOpen, setIsNewTaskModalOpen] = useState(false);
   const [isNewProjectModalOpen, setIsNewProjectModalOpen] = useState(false);
@@ -220,9 +225,85 @@ export const AppProvider = ({ children }) => {
     showToast(`Task updated to ${newStatus}`, 'info');
   };
 
+  const deleteTask = (taskId) => {
+    setTasks(prev => prev.filter(t => t.id !== taskId));
+    showToast('Task removed from sprint board', 'info');
+  };
+
+  const deleteProject = (projectId) => {
+    setProjects(prev => prev.filter(p => p.id !== projectId));
+    showToast('Project deleted from studio roster', 'info');
+  };
+
+  const addProjectMessage = (projectId, messageText, taskId = null) => {
+    if (!messageText || !messageText.trim()) return;
+    const linkedTask = taskId ? tasks.find(t => t.id === taskId) : null;
+    const nowTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const newMsg = {
+      id: `chat-${Date.now()}`,
+      senderId: currentUser.id,
+      senderName: currentUser.name,
+      role: currentRole,
+      roleTitle: currentPreset?.roleTitle || currentUser.title,
+      avatar: currentUser.avatar,
+      timestamp: `Today at ${nowTime}`,
+      text: messageText,
+      taskId: taskId || null,
+      taskTitle: linkedTask ? linkedTask.title : null
+    };
+
+    setProjectChats(prev => ({
+      ...prev,
+      [projectId]: [...(prev[projectId] || []), newMsg]
+    }));
+    showToast('Query posted to project discussion room', 'success');
+  };
+
+  const submitDailyWorkLog = (logData) => {
+    const nowTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const newLog = {
+      id: `log-${Date.now()}`,
+      employeeId: currentUser.id,
+      employeeName: currentUser.name,
+      role: currentRole,
+      roleTitle: currentPreset?.roleTitle || currentUser.title,
+      date: 'Today',
+      time: nowTime,
+      hoursLogged: Number(logData.hoursLogged) || 8,
+      accomplishments: logData.accomplishments || 'Progressed assigned sprint milestones.',
+      tasksWorkedOn: logData.tasksWorkedOn || [],
+      blockers: logData.blockers || 'None.'
+    };
+
+    setDailyWorkLogs(prev => [newLog, ...prev]);
+    setIsClockedIn(false);
+    setIsClockOutModalOpen(false);
+
+    setCurrentUser(prev => ({
+      ...prev,
+      clockOutTime: nowTime
+    }));
+
+    setStudioStats(prev => ({
+      ...prev,
+      clockedInCount: Math.max(0, prev.clockedInCount - 1),
+      occupancyRate: Math.round(((prev.clockedInCount - 1) / prev.totalEmployees) * 100)
+    }));
+
+    showToast(`Daily shift accomplishment log submitted for ${currentUser.name}. Signed off!`, 'success');
+  };
+
   const submitLeaveRequest = (leaveReq) => {
     showToast(`Leave request submitted for ${leaveReq.startDate} to ${leaveReq.endDate} (${leaveReq.type})`, 'success');
   };
+
+  // RBAC Permission Helpers
+  const canAssignTasks = currentRole === 'ADMIN';
+  const canDeleteTasks = currentRole === 'ADMIN';
+  const canCreateProjects = currentRole === 'ADMIN' || currentRole === 'SALES';
+  const canDeleteProjects = currentRole === 'ADMIN';
+  const canManagePersonnel = currentRole === 'ADMIN';
+  const canEditProposals = currentRole === 'ADMIN' || currentRole === 'SALES';
 
   return (
     <AppContext.Provider
@@ -241,10 +322,16 @@ export const AppProvider = ({ children }) => {
         addEmployee,
         projects,
         addProject,
+        deleteProject,
         inquiries,
         tasks,
         addTask,
         updateTaskStatus,
+        deleteTask,
+        projectChats,
+        addProjectMessage,
+        dailyWorkLogs,
+        submitDailyWorkLog,
         notifications,
         unreadNotificationsCount,
         markNotificationAsRead,
@@ -259,12 +346,20 @@ export const AppProvider = ({ children }) => {
         logout,
         clockInModalOpen,
         setClockInModalOpen,
+        isClockOutModalOpen,
+        setIsClockOutModalOpen,
         isSidebarMobileOpen,
         setIsSidebarMobileOpen,
         isNewTaskModalOpen,
         setIsNewTaskModalOpen,
         isNewProjectModalOpen,
         setIsNewProjectModalOpen,
+        canAssignTasks,
+        canDeleteTasks,
+        canCreateProjects,
+        canDeleteProjects,
+        canManagePersonnel,
+        canEditProposals,
         toastMessage,
         showToast
       }}

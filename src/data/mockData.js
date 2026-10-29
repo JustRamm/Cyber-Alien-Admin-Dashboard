@@ -31,9 +31,9 @@ export const INITIAL_EMPLOYEES = [
     code: 'EMP-8821',
     node: 'SFO NODE',
     hub: 'Pier 14 Studio',
-    title: 'Staff Systems Architect',
-    roleCategory: 'Engineering',
-    level: 'LEVEL 4 ARCHITECT',
+    title: 'Studio Principal & Super Admin',
+    roleCategory: 'Admin',
+    level: 'LEVEL 5 ADMIN',
     email: 'alex@cyberaliens.in',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
     status: 'ACTIVE_ONLINE',
@@ -46,7 +46,7 @@ export const INITIAL_EMPLOYEES = [
     workloadPercent: 88,
     onTimeRate: '96.4%',
     verified: true,
-    skills: ['Frontend Architecture', 'WebGL Shaders', 'WebAssembly', 'Distributed Nodes'],
+    skills: ['Studio Direction', 'Task Assignment & Governance', 'Budget Control', 'Personnel Operations'],
     kpis: {
       sprintVelocity: 94,
       codeQuality: 98,
@@ -55,72 +55,14 @@ export const INITIAL_EMPLOYEES = [
     }
   },
   {
-    id: 'emp-041',
-    name: 'Elena Rostova',
-    code: 'EMP-041',
-    node: 'SFO NODE',
-    hub: 'Pier 14 Studio',
-    title: 'Senior UI/UX & Spatial Lead',
-    roleCategory: 'Design & Systems',
-    level: 'LEVEL 3 SPATIAL',
-    email: 'elena.rostova@cyberaliens.in',
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80',
-    status: 'ON_LEAVE',
-    geofenceStatus: 'REMOTE_APPROVED',
-    currentDistanceMeters: 12,
-    accuracyVariance: '± 2.4m',
-    clockInTime: '09:14 AM',
-    clockOutTime: '--',
-    activeSprint: 'Vision Pro Spatial Kit',
-    workloadPercent: 15,
-    onTimeRate: '98.1%',
-    verified: true,
-    skills: ['VisionOS UI', 'Procedural Shaders', 'Figma Tokens', 'Micro-Interactions'],
-    kpis: {
-      sprintVelocity: 88,
-      codeQuality: 95,
-      mentorshipHours: 18,
-      innovationIndex: 96
-    }
-  },
-  {
-    id: 'emp-012',
-    name: 'Marcus Vance',
-    code: 'EMP-012',
-    node: 'LONDON NODE',
-    hub: 'London Soho Hub',
-    title: 'Creative Director & 3D Motion',
-    roleCategory: '3D Motion & Spatial',
-    level: 'LEVEL 5 DIRECTOR',
-    email: 'marcus.vance@cyberaliens.in',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-    status: 'ACTIVE_ONLINE',
-    geofenceStatus: 'OUT_OF_BOUNDS',
-    currentDistanceMeters: 1800,
-    accuracyVariance: '± 5.1m',
-    clockInTime: '10:02 AM',
-    clockOutTime: '--',
-    activeSprint: 'Monolith Identity 2026',
-    workloadPercent: 92,
-    onTimeRate: '91.2%',
-    verified: true,
-    skills: ['Unreal Engine 5', 'Houdini Simulation', 'Art Direction', 'Kinetic Typography'],
-    kpis: {
-      sprintVelocity: 96,
-      codeQuality: 92,
-      mentorshipHours: 32,
-      innovationIndex: 99
-    }
-  },
-  {
     id: 'emp-094',
     name: 'Kenji Takahashi',
     code: 'EMP-094',
     node: 'TOKYO NODE',
     hub: 'Tokyo Shibuya Hub',
-    title: 'Senior WebGL & Three.js Engineer',
-    roleCategory: 'Engineering',
-    level: 'LEVEL 4 ENGINEER',
+    title: 'Senior Frontend & WebGL Engineer',
+    roleCategory: 'Frontend Developer',
+    level: 'LEVEL 4 FRONTEND',
     email: 'kenji.takahashi@cyberaliens.in',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
     status: 'ACTIVE_ONLINE',
@@ -133,7 +75,7 @@ export const INITIAL_EMPLOYEES = [
     workloadPercent: 79,
     onTimeRate: '89.4%',
     verified: true,
-    skills: ['GLSL Shaders', 'Three.js Core', 'WebGPU', 'Math Optimization'],
+    skills: ['Three.js & WebGL', 'GLSL Custom Shaders', 'React 19 & TypeScript', 'Performance Profiling'],
     kpis: {
       sprintVelocity: 91,
       codeQuality: 99,
@@ -142,14 +84,72 @@ export const INITIAL_EMPLOYEES = [
     }
   },
   {
+    id: 'emp-012',
+    name: 'Marcus Vance',
+    code: 'EMP-012',
+    node: 'LONDON NODE',
+    hub: 'London Soho Hub',
+    title: 'Senior Backend & Systems Engineer',
+    roleCategory: 'Backend Developer',
+    level: 'LEVEL 4 BACKEND',
+    email: 'marcus.vance@cyberaliens.in',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    status: 'ACTIVE_ONLINE',
+    geofenceStatus: 'OUT_OF_BOUNDS',
+    currentDistanceMeters: 1800,
+    accuracyVariance: '± 5.1m',
+    clockInTime: '10:02 AM',
+    clockOutTime: '--',
+    activeSprint: 'Monolith Identity 2026',
+    workloadPercent: 92,
+    onTimeRate: '91.2%',
+    verified: true,
+    skills: ['Distributed Microservices', 'WebSocket & gRPC', 'PostgreSQL & Redis', 'Node/Go Pipelines'],
+    kpis: {
+      sprintVelocity: 96,
+      codeQuality: 92,
+      mentorshipHours: 32,
+      innovationIndex: 99
+    }
+  },
+  {
+    id: 'emp-041',
+    name: 'Elena Rostova',
+    code: 'EMP-041',
+    node: 'SFO NODE',
+    hub: 'Pier 14 Studio',
+    title: 'Lead UI/UX & Spatial Designer',
+    roleCategory: 'Designer',
+    level: 'LEVEL 4 DESIGN',
+    email: 'elena.rostova@cyberaliens.in',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80',
+    status: 'ON_LEAVE',
+    geofenceStatus: 'REMOTE_APPROVED',
+    currentDistanceMeters: 12,
+    accuracyVariance: '± 2.4m',
+    clockInTime: '09:14 AM',
+    clockOutTime: '--',
+    activeSprint: 'Vision Pro Spatial Kit',
+    workloadPercent: 15,
+    onTimeRate: '98.1%',
+    verified: true,
+    skills: ['Figma Design Systems', 'Spatial UX / visionOS', 'Design Tokens', 'Interactive Prototypes'],
+    kpis: {
+      sprintVelocity: 88,
+      codeQuality: 95,
+      mentorshipHours: 18,
+      innovationIndex: 96
+    }
+  },
+  {
     id: 'emp-9034',
     name: 'Sarah Jenkins',
     code: 'EMP-9034',
     node: 'SFO NODE',
     hub: 'Pier 14 Studio',
-    title: 'Principal Motion & Brand Designer',
-    roleCategory: 'Design & Systems',
-    level: 'LEVEL 3 STRATEGY',
+    title: 'Head of Client Partnerships & Sales',
+    roleCategory: 'Sales',
+    level: 'LEVEL 4 COMMERCIAL',
     email: 'sarah.jenkins@cyberaliens.in',
     avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
     status: 'ACTIVE_ONLINE',
@@ -162,7 +162,7 @@ export const INITIAL_EMPLOYEES = [
     workloadPercent: 95,
     onTimeRate: '94.0%',
     verified: true,
-    skills: ['Brand Architecture', 'Motion Design', 'Cinema 4D', 'Design Systems'],
+    skills: ['Client Acquisitions', 'Commercial Proposals', 'Enterprise RFPs', 'Pipeline Growth'],
     kpis: {
       sprintVelocity: 93,
       codeQuality: 96,
@@ -334,53 +334,111 @@ export const INITIAL_INQUIRIES = [
 export const INITIAL_TASKS = [
   {
     id: 'task-101',
-    title: 'Refactor GLSL fragment shader for volumetric fog',
+    title: 'Build WebGL volumetric fog shader pass',
     project: 'Project Obsidian',
-    assignedTo: 'Alex Mercer',
+    assignedTo: 'Kenji Takahashi',
+    roleTag: 'FRONTEND_DEV',
     status: 'IN_PROGRESS',
     priority: 'CRITICAL',
     estimateHours: 6,
-    loggedHours: 4.5
+    loggedHours: 4.5,
+    description: 'Implement raymarching volumetric density fog with custom GLSL uniforms.'
   },
   {
     id: 'task-102',
-    title: 'Design character interaction states for episode 3',
-    project: 'STARLET 5.0',
-    assignedTo: 'Sarah Jenkins',
-    status: 'REVIEW',
+    title: 'Deploy GraphQL microservice for telemetry buffer',
+    project: 'Project Obsidian',
+    assignedTo: 'Marcus Vance',
+    roleTag: 'BACKEND_DEV',
+    status: 'IN_PROGRESS',
     priority: 'HIGH',
     estimateHours: 8,
-    loggedHours: 8
+    loggedHours: 6,
+    description: 'Provide high-throughput Float32Array binary streams via WebSocket.'
   },
   {
     id: 'task-103',
-    title: 'Fix WebGPU memory leak on frame resize',
-    project: 'Neo-Kinetic Studio',
-    assignedTo: 'Kenji Takahashi',
-    status: 'BLOCKED',
-    priority: 'CRITICAL',
-    estimateHours: 12,
-    loggedHours: 5
+    title: 'Design spatial UI tokens and VisionOS component kit',
+    project: 'STARLET 5.0',
+    assignedTo: 'Elena Rostova',
+    roleTag: 'DESIGNER',
+    status: 'REVIEW',
+    priority: 'HIGH',
+    estimateHours: 10,
+    loggedHours: 9.5,
+    description: 'Export spatial typography tokens, lighting materials, and micro-interactions.'
   },
   {
     id: 'task-104',
-    title: 'Export 8K keyframes for Munich Biennial press kit',
-    project: 'Chrono Vault',
-    assignedTo: 'Kaito Tanaka',
-    status: 'DONE',
-    priority: 'NORMAL',
-    estimateHours: 4,
-    loggedHours: 3.5
+    title: 'Draft commercial RFP proposal for Aura Botanica ($120k)',
+    project: 'STARLET 5.0',
+    assignedTo: 'Sarah Jenkins',
+    roleTag: 'SALES',
+    status: 'IN_PROGRESS',
+    priority: 'CRITICAL',
+    estimateHours: 8,
+    loggedHours: 5,
+    description: 'Prepare multi-tier budget scope and schedule client alignment pitch.'
   },
   {
     id: 'task-105',
-    title: 'Setup WebAssembly thread worker pooling',
-    project: 'Hyperion Audio',
+    title: 'Supervise multi-node cluster synchronization & review milestones',
+    project: 'Project Obsidian',
     assignedTo: 'Alex Mercer',
+    roleTag: 'ADMIN',
+    status: 'IN_PROGRESS',
+    priority: 'NORMAL',
+    estimateHours: 5,
+    loggedHours: 3,
+    description: 'Audit SFO Pier 14 HQ and London node cluster latency and milestone delivery.'
+  },
+  {
+    id: 'task-106',
+    title: 'Fix Three.js canvas memory leak on viewport resize',
+    project: 'Neo-Kinetic Studio',
+    assignedTo: 'Kenji Takahashi',
+    roleTag: 'FRONTEND_DEV',
     status: 'BACKLOG',
     priority: 'HIGH',
-    estimateHours: 10,
-    loggedHours: 0
+    estimateHours: 8,
+    loggedHours: 1,
+    description: 'Dispose unreferenced geometry buffers during browser viewport transitions.'
+  },
+  {
+    id: 'task-107',
+    title: 'Database migration for commercial proposal ledger',
+    project: 'Neo-Kinetic Studio',
+    assignedTo: 'Marcus Vance',
+    roleTag: 'BACKEND_DEV',
+    status: 'REVIEW',
+    priority: 'NORMAL',
+    estimateHours: 6,
+    loggedHours: 6,
+    description: 'Migrate contract amendment tables and add audit hash stamps.'
+  },
+  {
+    id: 'task-108',
+    title: 'Export 3D volumetric assets & Figma design library',
+    project: 'Project Obsidian',
+    assignedTo: 'Elena Rostova',
+    roleTag: 'DESIGNER',
+    status: 'DONE',
+    priority: 'NORMAL',
+    estimateHours: 4,
+    loggedHours: 4,
+    description: 'Synced 8K keyframe textures and normal maps to the studio asset vault.'
+  },
+  {
+    id: 'task-109',
+    title: 'Negotiate contract extension for Munich Biennial',
+    project: 'Chrono Vault',
+    assignedTo: 'Sarah Jenkins',
+    roleTag: 'SALES',
+    status: 'DONE',
+    priority: 'HIGH',
+    estimateHours: 6,
+    loggedHours: 6,
+    description: 'Secured full delivery acceptance and $95k final milestone wire.'
   }
 ];
 
@@ -399,143 +457,353 @@ export const PRESET_ROLES = [
     password: 'SuperAdminPass#2026',
     role: 'ADMIN',
     isSuperAdmin: true,
-    roleBadge: 'SUPER ADMIN',
+    roleBadge: 'ADMIN',
     roleTitle: 'Studio Principal & Super Admin',
-    department: 'Executive Systems & Root Infrastructure',
+    department: 'Studio Executive & Systems Architecture',
     node: 'SFO NODE 01 // PIER 14 HQ',
     tier: 'LEVEL 5 ROOT PRIVILEGES',
     badgeColor: '#B90538',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
     defaultRoute: '/admin/mission-control',
     responsibilities: [
-      'Oversee total studio occupancy, system latency, and multi-node cluster health.',
+      'Assign sprint tasks to each individual operative across all projects.',
+      'Supervise total studio occupancy, system latency, and multi-node cluster health.',
       'Authorize annual production budgets ($348.5k) and commercial client contracts.',
-      'Manage global hardware allocation, cloud render clusters, and cryptographic keys.',
       'Enforce geofence boundary parameters and review security breach escalations.'
     ],
     powers: [
-      'Full Administrative Root Access across all command suites',
+      'Full Administrative Root Access: Create, Edit, Assign, and Delete all tasks & projects',
       'Geofence radius configuration & manual punch override authority',
       'Employee onboarding, role tier elevation, and suspension protocol',
-      'Access to financial telemetry, client pipelines, and billing balance sheets'
+      'Access to financial telemetry, client pipelines, and billing balance sheets',
+      'Participate in all project chatrooms with verified root administrator authority'
     ]
   },
   {
-    id: 'ops-lead',
-    employeeId: 'emp-9034',
-    name: 'Sarah Jenkins',
-    email: 'sarah.jenkins@cyberaliens.in',
-    password: 'OpsPeopleLead#2026',
-    role: 'OPERATIONS',
-    isSuperAdmin: false,
-    roleBadge: 'OPERATIONS LEAD',
-    roleTitle: 'Head of People & Operations',
-    department: 'People, Culture & Pier 14 Operations',
-    node: 'SFO NODE 01 // PIER 14 HQ',
-    tier: 'LEVEL 4 OPERATIONAL LEAD',
-    badgeColor: '#F59E0B',
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
-    defaultRoute: '/admin/attendance',
-    responsibilities: [
-      'Monitor real-time punctuality adherence (94.8%) and daily Pier 14 radar attendance audits.',
-      'Manage new operative onboarding dossiers, credential provisioning, and workstations.',
-      'Review and adjudicate employee leave applications and timesheet discrepancies.',
-      'Coordinate studio-wide staffing workloads and sprint capacity planning.'
-    ],
-    powers: [
-      'Full Attendance Command & Pier 14 Geolocation Radar supervision',
-      'Personnel Directory management and new employee provisioning drawer',
-      'Authority to approve or deny Leave & PTO requests across all departments',
-      'Timesheet discrepancy correction and timesheet export permissions'
-    ]
-  },
-  {
-    id: 'creative-director',
-    employeeId: 'emp-012',
-    name: 'Marcus Vance',
-    email: 'marcus.vance@cyberaliens.in',
-    password: 'CreativeLead#2026',
-    role: 'CREATIVE',
-    isSuperAdmin: false,
-    roleBadge: 'CREATIVE DIRECTOR',
-    roleTitle: 'Creative Director & Sprint Lead',
-    department: '3D Motion & Spatial Computing',
-    node: 'LONDON NODE 02 // SOHO HUB',
-    tier: 'LEVEL 4 SPRINT LEAD',
-    badgeColor: '#8B5CF6',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-    defaultRoute: '/portal/tasks',
-    responsibilities: [
-      'Direct visual art pipelines for Unreal Engine 5, Houdini simulations, and brand systems.',
-      'Manage 8 active commercial engagements (Obsidian, STARLET 5.0, Neo-Kinetic).',
-      'Prioritize sprint backlog tickets and allocate specialist craft resources.',
-      'Lead design critiques, milestone sign-offs, and quality assurance releases.'
-    ],
-    powers: [
-      'Tasks & Sprint Kanban Board master control (create, assign, reorder tickets)',
-      'Studio Operations Dashboard access to inspect client deliverables and win probabilities',
-      'Team resource craft allocation controls (WebGL, Shaders, 3D Motion)',
-      'Review and approve completed engineering milestones'
-    ]
-  },
-  {
-    id: 'webgl-engineer',
+    id: 'frontend-dev',
     employeeId: 'emp-094',
     name: 'Kenji Takahashi',
     email: 'kenji.takahashi@cyberaliens.in',
-    password: 'WebGLSpecialist#2026',
-    role: 'SPECIALIST',
+    password: 'FrontendDevPass#2026',
+    role: 'FRONTEND_DEV',
     isSuperAdmin: false,
-    roleBadge: 'WEBGL ENGINEER',
-    roleTitle: 'Senior WebGL & Three.js Engineer',
-    department: 'Creative Engineering & GLSL Shaders',
+    roleBadge: 'FRONTEND DEVELOPER',
+    roleTitle: 'Senior Frontend & WebGL Engineer',
+    department: 'Creative Engineering & UI Systems',
     node: 'TOKYO NODE 03 // SHIBUYA',
-    tier: 'LEVEL 3 SPECIALIST OPERATIVE',
+    tier: 'LEVEL 4 SPECIALIST',
     badgeColor: '#06B6D4',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
     defaultRoute: '/portal/home',
     responsibilities: [
-      'Develop low-latency WebGL and WebGPU shader pipelines for browser installations.',
-      'Execute sprint tasks assigned across active commercial projects.',
-      'Complete daily geofence clock-in and punch telemetry verification.',
-      'Collaborate with Lead Architects on performance profiling and shader memory optimizations.'
+      'Develop low-latency WebGL, WebGPU, and Three.js shader pipelines for browser installations.',
+      'Execute assigned frontend tasks and log daily hours upon clocking out.',
+      'Ask and answer technical frontend queries in project-specific chatrooms.',
+      'Maintain 60fps frame rate benchmarks and optimize GLSL shader memory.'
     ],
     powers: [
-      'Specialist Hub single-tap geofence clock-in & punch management (radar view excluded)',
-      'Personal Sprint Kanban board access to update assigned ticket statuses',
-      'Timesheet and punch history ledger inspection',
-      'Submit PTO & leave requests with automated coverage suggestions',
-      'Personal Craft Radar & Skill KPI profile tracking'
+      'View and advance assigned frontend sprint tasks (Backlog → In Progress → Review → Done)',
+      'Participate in project chatrooms to ask questions and clarify technical requirements with teammates and Admin',
+      'Submit daily shift clock-out handover logs detailing daily accomplishments',
+      'Access personal Craft Mastery, sprint velocity, and technical benchmark telemetry'
     ]
   },
   {
-    id: 'spatial-lead',
+    id: 'backend-dev',
+    employeeId: 'emp-012',
+    name: 'Marcus Vance',
+    email: 'marcus.vance@cyberaliens.in',
+    password: 'BackendDevPass#2026',
+    role: 'BACKEND_DEV',
+    isSuperAdmin: false,
+    roleBadge: 'BACKEND DEVELOPER',
+    roleTitle: 'Senior Backend & Systems Engineer',
+    department: 'Distributed Infrastructure & APIs',
+    node: 'LONDON NODE 02 // SOHO HUB',
+    tier: 'LEVEL 4 SPECIALIST',
+    badgeColor: '#8B5CF6',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    defaultRoute: '/portal/home',
+    responsibilities: [
+      'Engineer distributed GraphQL microservices, Redis caching, and WebSocket streams.',
+      'Maintain 14ms cluster latency and 128.4 Gb/s stream throughput.',
+      'Execute assigned backend tasks and submit daily work accomplishment logs upon clocking out.',
+      'Coordinate API contracts and database schema updates in project chatrooms.'
+    ],
+    powers: [
+      'View and advance assigned backend sprint tickets and API endpoints',
+      'Participate in project chatrooms to ask questions and resolve API schemas with Frontend, Design, and Admin',
+      'Submit daily shift clock-out handover logs detailing daily accomplishments',
+      'Inspect cluster telemetry, server node health, and endpoint response times'
+    ]
+  },
+  {
+    id: 'designer',
     employeeId: 'emp-041',
     name: 'Elena Rostova',
     email: 'elena.rostova@cyberaliens.in',
-    password: 'SpatialLead#2026',
-    role: 'SPECIALIST',
+    password: 'DesignerPass#2026',
+    role: 'DESIGNER',
     isSuperAdmin: false,
-    roleBadge: 'SPATIAL DESIGNER',
-    roleTitle: 'Senior UI/UX & Spatial Lead',
-    department: 'Design Systems & VisionOS Spatial UI',
+    roleBadge: 'DESIGNER',
+    roleTitle: 'Lead UI/UX & Spatial Designer',
+    department: 'Design Systems & VisionOS Spatial 3D',
     node: 'SFO NODE 01 // PIER 14 HQ',
-    tier: 'LEVEL 3 SPATIAL OPERATIVE',
+    tier: 'LEVEL 4 SPECIALIST',
     badgeColor: '#10B981',
     avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80',
-    defaultRoute: '/portal/profile',
+    defaultRoute: '/portal/home',
     responsibilities: [
       'Design spatial UI design tokens, micro-interactions, and VisionOS component kits.',
-      'Maintain design system token parity and procedural animation curves.',
-      'Log research hours and submit weekly timesheet reports.',
-      'Mentor junior designers and document spatial interaction standards.'
+      'Maintain Figma design system token parity and procedural 3D assets.',
+      'Execute assigned design deliverables and log daily accomplishments when clocking out.',
+      'Collaborate on art direction and visual specs in project chatrooms.'
     ],
     powers: [
-      'Personal Profile & Craft Mastery KPI review (VisionOS, Figma Tokens, Shaders)',
-      'Specialist Geofence Hub verification and personal attendance logs',
-      'Submit and monitor leave balance allocations (Annual, Sabbatical)',
-      'Track and complete assigned sprint design deliverables'
+      'View and advance assigned design sprint tickets and spatial assets',
+      'Participate in project chatrooms to review design tokens and clarify UI requirements with Engineers and Admin',
+      'Submit daily shift clock-out handover logs detailing daily accomplishments',
+      'Manage design asset vault, review critiques, and maintain visual tokens'
     ]
+  },
+  {
+    id: 'sales-lead',
+    employeeId: 'emp-9034',
+    name: 'Sarah Jenkins',
+    email: 'sarah.jenkins@cyberaliens.in',
+    password: 'SalesLeadPass#2026',
+    role: 'SALES',
+    isSuperAdmin: false,
+    roleBadge: 'SALES',
+    roleTitle: 'Head of Client Partnerships & Sales',
+    department: 'Commercial Engagements & Growth',
+    node: 'SFO NODE 01 // PIER 14 HQ',
+    tier: 'LEVEL 4 COMMERCIAL',
+    badgeColor: '#F59E0B',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
+    defaultRoute: '/portal/home',
+    responsibilities: [
+      'Drive commercial sales pipeline ($348.5k), client proposals, and RFP reviews.',
+      'Engage prospective clients (Aura Botanica, Kinetix AI, Voxel Works) and close contracts.',
+      'Execute assigned commercial tasks and log client deliverables upon clocking out.',
+      'Relay client feedback and milestone timelines in project chatrooms.'
+    ],
+    powers: [
+      'Create, edit, and update client proposals, inquiries, and commercial RFP deals',
+      'Participate in project chatrooms to align client requirements with Engineers, Designers, and Admin',
+      'Submit daily shift clock-out handover logs detailing client deal progress',
+      'Inspect studio operations pipeline, commercial win probabilities, and contract values'
+    ]
+  }
+];
+
+export const INITIAL_PROJECT_CHATS = {
+  'proj-obsidian': [
+    {
+      id: 'chat-obs-1',
+      senderId: 'emp-012',
+      senderName: 'Marcus Vance',
+      role: 'BACKEND_DEV',
+      roleTitle: 'Backend Developer',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 09:30 AM',
+      text: 'Hey @Kenji, the GraphQL endpoint for volumetric shader buffers has landed on staging: `/api/v2/obsidian/particles`.',
+      taskId: 'task-be-1',
+      taskTitle: 'GraphQL microservice for telemetry buffer'
+    },
+    {
+      id: 'chat-obs-2',
+      senderId: 'emp-094',
+      senderName: 'Kenji Takahashi',
+      role: 'FRONTEND_DEV',
+      roleTitle: 'Frontend Developer',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 09:42 AM',
+      text: 'Awesome Marcus! Query on #task-fe-1: Is the stream returning ArrayBuffer or JSON Float32Array? Need to know for the WebGL uniform binding.',
+      taskId: 'task-fe-1',
+      taskTitle: 'Build WebGL volumetric fog shader pass'
+    },
+    {
+      id: 'chat-obs-3',
+      senderId: 'emp-012',
+      senderName: 'Marcus Vance',
+      role: 'BACKEND_DEV',
+      roleTitle: 'Backend Developer',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 09:48 AM',
+      text: 'It streams raw Float32Array directly through the WebSocket to keep the 60fps frame rate without JSON serialization overhead.',
+      taskId: 'task-be-1',
+      taskTitle: 'GraphQL microservice for telemetry buffer'
+    },
+    {
+      id: 'chat-obs-4',
+      senderId: 'emp-041',
+      senderName: 'Elena Rostova',
+      role: 'DESIGNER',
+      roleTitle: 'Designer',
+      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 10:15 AM',
+      text: '@Alex Mercer, the new dark mode tokens and 3D spatial viewport lighting rigs are updated in the asset vault for Project Obsidian. Ready for admin sign-off!',
+      taskId: 'task-ds-2',
+      taskTitle: 'Export 3D volumetric assets'
+    },
+    {
+      id: 'chat-obs-5',
+      senderId: 'emp-8821',
+      senderName: 'Alex Mercer',
+      role: 'ADMIN',
+      roleTitle: 'Studio Principal & Admin',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 10:30 AM',
+      text: 'Reviewed and approved Elena! Lighting values look phenomenal. @Sarah Jenkins, we can now present the interactive demo to Obsidian Cloud leadership.',
+      taskId: 'task-ad-1',
+      taskTitle: 'Supervise multi-node cluster synchronization'
+    },
+    {
+      id: 'chat-obs-6',
+      senderId: 'emp-9034',
+      senderName: 'Sarah Jenkins',
+      role: 'SALES',
+      roleTitle: 'Sales & Partnerships',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 10:45 AM',
+      text: 'Super! I have scheduled the client review call for 3:00 PM EST. Will share the meeting link in the channel.',
+      taskId: 'task-sl-3',
+      taskTitle: 'Finalize client deliverable sign-off'
+    }
+  ],
+  'proj-starlet': [
+    {
+      id: 'chat-str-1',
+      senderId: 'emp-9034',
+      senderName: 'Sarah Jenkins',
+      role: 'SALES',
+      roleTitle: 'Sales & Partnerships',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 08:30 AM',
+      text: 'Mind Empowered Foundation loved the latest transmedia chapter! They asked if we can add subtitles in 4 languages for the next sprint release.',
+      taskId: 'task-sl-1',
+      taskTitle: 'Draft commercial RFP proposal'
+    },
+    {
+      id: 'chat-str-2',
+      senderId: 'emp-041',
+      senderName: 'Elena Rostova',
+      role: 'DESIGNER',
+      roleTitle: 'Designer',
+      avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 08:50 AM',
+      text: 'Yes! I have prepared the spatial kinetic subtitle typography tokens in Figma. @Kenji can bind them directly to the player.',
+      taskId: 'task-ds-1',
+      taskTitle: 'Design spatial UI tokens'
+    },
+    {
+      id: 'chat-str-3',
+      senderId: 'emp-8821',
+      senderName: 'Alex Mercer',
+      role: 'ADMIN',
+      roleTitle: 'Studio Principal & Admin',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Today at 09:10 AM',
+      text: 'Approved to include in Sprint Week 12. @Kenji, estimate is 4 hours, added to your backlog.',
+      taskId: 'task-ad-1',
+      taskTitle: 'Task Allocation'
+    }
+  ],
+  'proj-neo': [
+    {
+      id: 'chat-neo-1',
+      senderId: 'emp-094',
+      senderName: 'Kenji Takahashi',
+      role: 'FRONTEND_DEV',
+      roleTitle: 'Frontend Developer',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Yesterday at 16:20 PM',
+      text: 'Query for @Marcus: The robotic telemetry socket is dropping frames when the actuator does a 360-degree sweep. Can we enable backpressure throttling?',
+      taskId: 'task-fe-2',
+      taskTitle: 'Fix Three.js canvas memory leak'
+    },
+    {
+      id: 'chat-neo-2',
+      senderId: 'emp-012',
+      senderName: 'Marcus Vance',
+      role: 'BACKEND_DEV',
+      roleTitle: 'Backend Developer',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+      timestamp: 'Yesterday at 16:45 PM',
+      text: 'Done! Deployed throttling patch with 20ms debounce on the WebSocket listener. Test again on staging.',
+      taskId: 'task-be-3',
+      taskTitle: 'Database migration for proposal ledger'
+    }
+  ],
+  'proj-chrono': [
+    {
+      id: 'chat-chr-1',
+      senderId: 'emp-9034',
+      senderName: 'Sarah Jenkins',
+      role: 'SALES',
+      roleTitle: 'Sales & Partnerships',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
+      timestamp: '2 days ago',
+      text: 'Munich Biennial confirmed final delivery acceptance. All 8K keyframes and binaural audio stems validated. Project marked 100% complete!',
+      taskId: 'task-sl-2',
+      taskTitle: 'Negotiate contract extension'
+    }
+  ]
+};
+
+export const INITIAL_DAILY_WORK_LOGS = [
+  {
+    id: 'log-1',
+    employeeId: 'emp-094',
+    employeeName: 'Kenji Takahashi',
+    role: 'FRONTEND_DEV',
+    roleTitle: 'Senior Frontend & WebGL Engineer',
+    date: 'Today',
+    time: '18:30 PM',
+    hoursLogged: 8,
+    accomplishments: 'Implemented WebGPU particle buffer fallback for Project Obsidian and resolved canvas memory leak on viewport resize in Neo-Kinetic Studio.',
+    tasksWorkedOn: ['Build WebGL volumetric fog shader pass', 'Fix Three.js canvas memory leak on viewport resize'],
+    blockers: 'None. All WebGL frame render loops steady at 60fps.'
+  },
+  {
+    id: 'log-2',
+    employeeId: 'emp-012',
+    employeeName: 'Marcus Vance',
+    role: 'BACKEND_DEV',
+    roleTitle: 'Senior Backend & Systems Engineer',
+    date: 'Today',
+    time: '18:45 PM',
+    hoursLogged: 8.5,
+    accomplishments: 'Deployed GraphQL microservice endpoint for particle stream and optimized Redis caching across London Soho node.',
+    tasksWorkedOn: ['Deploy GraphQL microservice for telemetry buffer'],
+    blockers: 'Awaiting client API key verification for live production deployment.'
+  },
+  {
+    id: 'log-3',
+    employeeId: 'emp-041',
+    employeeName: 'Elena Rostova',
+    role: 'DESIGNER',
+    roleTitle: 'Lead UI/UX & Spatial Designer',
+    date: 'Today',
+    time: '18:15 PM',
+    hoursLogged: 7.5,
+    accomplishments: 'Completed VisionOS spatial design tokens and updated lighting shaders in Figma library.',
+    tasksWorkedOn: ['Design spatial UI tokens and VisionOS component kit', 'Export 3D volumetric assets'],
+    blockers: 'None. Ready for sprint milestone sign-off.'
+  },
+  {
+    id: 'log-4',
+    employeeId: 'emp-9034',
+    employeeName: 'Sarah Jenkins',
+    role: 'SALES',
+    roleTitle: 'Head of Client Partnerships & Sales',
+    date: 'Today',
+    time: '19:00 PM',
+    hoursLogged: 8,
+    accomplishments: 'Finalized $120k commercial RFP scope for Aura Botanica and coordinated milestone review meeting with Obsidian Cloud.',
+    tasksWorkedOn: ['Draft commercial RFP proposal for Aura Botanica ($120k)'],
+    blockers: 'Awaiting contract legal sign-off from executive council.'
   }
 ];
 

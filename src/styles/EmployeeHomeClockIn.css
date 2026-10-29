@@ -552,3 +552,46 @@
   color: var(--color-on-surface-variant);
   margin-top: 2px;
 }
+
+/* Project Chatroom button & Quick Links */
+.spec-chat-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-surface-container);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.spec-chat-link-btn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+.quick-chat-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--color-surface-container-low);
+  border: 1px solid var(--color-surface-container);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  color: var(--color-on-surface);
+}
+
+.quick-chat-nav-row:hover {
+  background-color: var(--color-surface-container-highest);
+  border-color: var(--color-secondary);
+  transform: translateX(2px);
+}
