@@ -257,3 +257,4 @@ export const NewProjectModal = () => {
     </div>
   );
 };
+
