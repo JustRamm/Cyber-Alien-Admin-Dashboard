@@ -138,16 +138,19 @@ export const PlatformLogin = () => {
               <div className="role-chips-scroll">
                 {PRESET_ROLES.map((role) => {
                   const isSelected = selectedPreset.id === role.id;
+                  const shortRole = role.roleBadge ? role.roleBadge.split(' ')[0] : role.role;
                   return (
                     <button
                       key={role.id}
                       type="button"
                       className={`role-select-chip ${isSelected ? 'active' : ''}`}
                       onClick={() => handleSelectRole(role)}
-                      title={`Auto-fill credentials as ${role.name}`}
+                      title={`Auto-fill credentials as ${role.name} (${role.roleTitle})`}
                     >
-                      <span>{role.name.split(' ')[0]} {role.name.split(' ')[1]?.[0]}.</span>
-                      <span className="role-chip-badge">{role.roleBadge}</span>
+                      <span style={{ fontWeight: 700 }}>
+                        {role.name.split(' ')[0]} {role.name.split(' ')[1]?.[0]}.
+                      </span>
+                      <span className="role-chip-badge">{shortRole}</span>
                     </button>
                   );
                 })}

@@ -93,16 +93,20 @@
 /* 2. Main Dual-Card Layout */
 .login-dual-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(360px, 460px) minmax(420px, 580px);
   gap: 32px;
   width: 100%;
-  max-width: 1180px;
+  max-width: 1140px;
   margin: 0 auto;
   align-items: stretch;
+  justify-content: center;
 }
 
 /* 2A. Left Hero Card */
 .hero-dark-card {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
   background: radial-gradient(circle at 75% 75%, rgba(185, 5, 56, 0.45) 0%, transparent 60%),
               radial-gradient(circle at 20% 30%, rgba(220, 44, 79, 0.18) 0%, transparent 50%),
               #0D090B;
@@ -119,15 +123,17 @@
   min-height: 620px;
 }
 
-/* Atmospheric hardware background shimmer */
+/* Atmospheric hardware background shimmer with high-tech studio rack texture */
 .hero-card-atmosphere {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.6;
+    linear-gradient(to bottom, rgba(13, 9, 11, 0.72) 0%, rgba(13, 9, 11, 0.90) 100%),
+    radial-gradient(circle at 80% 70%, rgba(220, 44, 79, 0.45) 0%, transparent 60%),
+    url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.88;
   pointer-events: none;
 }
 
@@ -268,6 +274,9 @@
 
 /* 2B. Right Auth Card */
 .auth-white-card {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
   background-color: #ffffff;
   border-radius: 40px;
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -357,10 +366,9 @@
 
 .role-chips-scroll {
   display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding-bottom: 2px;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
 }
 
 .role-chips-scroll::-webkit-scrollbar {
@@ -841,6 +849,7 @@
 @media (max-width: 960px) {
   .login-dual-grid {
     grid-template-columns: 1fr;
+    max-width: 560px;
   }
   .hero-dark-card {
     min-height: auto;
