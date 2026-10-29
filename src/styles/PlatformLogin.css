@@ -517,6 +517,19 @@
   font-weight: 500;
 }
 
+.auth-select-field {
+  width: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  color: #111110;
+}
+
+.auth-select-field option {
+  background-color: #ffffff;
+  color: #111110;
+  padding: 8px;
+}
+
 .input-action-glyph {
   font-size: 18px;
   color: #888880;

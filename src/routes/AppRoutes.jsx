@@ -4,6 +4,7 @@ import { useApp } from '../context/AppContext';
 
 // Auth Screens
 import { PlatformLogin } from '../screens/PlatformLogin';
+import { SignUp } from '../screens/SignUp';
 import { ResetPassword } from '../screens/ResetPassword';
 import { FirstLoginSetup } from '../screens/FirstLoginSetup';
 
@@ -38,6 +39,8 @@ export const AppRoutes = () => {
 
       {/* Authentication */}
       <Route path="/login" element={<PlatformLogin />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/first-login" element={<Navigate to="/signup" replace />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/setup-wizard" element={<FirstLoginSetup />} />
 

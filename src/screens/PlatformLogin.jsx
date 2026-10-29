@@ -36,7 +36,9 @@ export const PlatformLogin = () => {
       {/* 1. Top Header Bar */}
       <header className="login-top-bar">
         <div className="brand-capsule-pill">
-          <div className="brand-hex-icon">⬡</div>
+          <div className="brand-hex-icon">
+            <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>view_in_ar</span>
+          </div>
           <span className="brand-capsule-title">CYBER ALIENS</span>
           <span className="brand-version-tag">v2.4</span>
         </div>
@@ -272,7 +274,7 @@ export const PlatformLogin = () => {
 
           {/* Card Footer Link */}
           <div className="auth-card-footer-link">
-            Need studio credentials? <Link to="/first-login">Contact your administrator</Link>
+            Need studio credentials? <Link to="/signup">Create account</Link> • <Link to="/setup-wizard">Contact administrator</Link>
           </div>
         </section>
       </main>
