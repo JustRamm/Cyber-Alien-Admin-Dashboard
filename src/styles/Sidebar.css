@@ -45,23 +45,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.sidebar-ca-badge {
-  width: 36px;
-  height: 36px;
-  background-color: #1a1919;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-headline);
-  font-weight: 800;
-  font-size: 15px;
-  color: #ffffff;
-  letter-spacing: -0.02em;
-  flex-shrink: 0;
+  padding-left: 2px;
 }
 
 .sidebar-brand-text {

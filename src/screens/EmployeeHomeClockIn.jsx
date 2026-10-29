@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
-import { GeofenceRadar } from '../components/GeofenceRadar';
 import '../styles/EmployeeHomeClockIn.css';
 
 export const EmployeeHomeClockIn = () => {
   const {
     currentUser,
+    currentPreset,
     isClockedIn,
     handleClockOut,
     setClockInModalOpen,
     tasks,
-    showToast,
-    toggleRole
+    showToast
   } = useApp();
 
   const [onBreak, setOnBreak] = useState(false);
@@ -31,24 +30,31 @@ export const EmployeeHomeClockIn = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span className="status-dot pulse"></span>
             <span className="font-label-caps" style={{ color: 'var(--color-secondary)' }}>
-              SPECIALIST NODE // WORKSPACE
+              {currentPreset?.roleBadge || 'SPECIALIST'} // OPERATIVE WORKSPACE
             </span>
           </div>
           <h1 className="font-headline-lg">Good morning, {currentUser.name.split(' ')[0]}</h1>
           <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '15px' }}>
-            Pier 14 Studio Waterfront • Mesh connection: ARUBA_PRO_04 (14ms latency)
+            {currentUser.hub || 'Pier 14 Studio Waterfront'} • {currentUser.title}
           </p>
         </div>
 
-        <button
-          type="button"
-          className="btn-ghost"
-          onClick={toggleRole}
-          title="Switch to Admin Core"
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>admin_panel_settings</span>
-          <span>Switch to Admin Core</span>
-        </button>
+        <div className="role-spec-badge-pill" style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '8px 16px',
+          borderRadius: '999px',
+          background: '#0a0a0a',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          color: '#ffffff',
+          fontSize: '12px',
+          fontFamily: 'var(--font-headline)',
+          fontWeight: 600
+        }}>
+          <span className="live-dot pulse" style={{ width: 8, height: 8, background: '#10b981' }}></span>
+          <span>{currentPreset?.roleBadge || 'SPECIALIST'}</span>
+        </div>
       </div>
 
       {/* Main Interactive Clock-in Monolith */}
@@ -70,9 +76,9 @@ export const EmployeeHomeClockIn = () => {
 
           <div style={{ color: 'var(--color-primary-fixed-dim)', fontSize: '13px' }}>
             {isClockedIn ? (
-              <>Clocked in at <strong>{currentUser.clockInTime}</strong> • Verified at Pier 14 Hub ({currentUser.currentDistanceMeters}m from hub core)</>
+              <>Clocked in at <strong>{currentUser.clockInTime || '09:12 AM'}</strong> • Studio mesh node verified</>
             ) : (
-              <>Ready to punch in. Connect to studio beacon or verify location coordinates within 150m perimeter.</>
+              <>Ready to punch in. Connect to studio beacon or verify location coordinates.</>
             )}
           </div>
         </div>
@@ -84,8 +90,8 @@ export const EmployeeHomeClockIn = () => {
               className="punch-main-action-btn"
               onClick={() => setClockInModalOpen(true)}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>radar</span>
-              <span>Verify Geofence & Clock In</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>fingerprint</span>
+              <span>Clock In & Begin Shift</span>
             </button>
           ) : (
             <>
@@ -158,9 +164,105 @@ export const EmployeeHomeClockIn = () => {
           </div>
         </div>
 
-        {/* Right Column: Pier 14 Geofence Radar Mini */}
-        <div>
-          <GeofenceRadar showSwitcher={false} compact={true} />
+        {/* Right Column: Shift Telemetry & Craft KPIs (Radar removed for specialist) */}
+        <div className="portal-task-card" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-md)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div>
+              <span className="font-label-caps" style={{ color: 'var(--color-secondary)' }}>
+                SHIFT METRICS
+              </span>
+              <h2 className="font-headline-sm" style={{ marginTop: '2px' }}>Daily Telemetry & Hours</h2>
+            </div>
+            <span className="accuracy-pill" style={{ background: '#ecfdf5', color: '#047857' }}>
+              ✓ On Target
+            </span>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+            <div style={{
+              background: 'var(--color-surface)',
+              padding: '16px',
+              borderRadius: '16px',
+              border: '1px solid var(--color-surface-container-high)'
+            }}>
+              <div style={{ fontSize: '11px', color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Shift Progress
+              </div>
+              <div style={{ fontSize: '24px', fontWeight: 800, fontFamily: 'var(--font-headline)', color: 'var(--color-primary)', marginTop: 4 }}>
+                5.4 <span style={{ fontSize: '14px', fontWeight: 600 }}>/ 8.0h</span>
+              </div>
+              <div style={{
+                height: 6,
+                background: 'var(--color-surface-container-high)',
+                borderRadius: 4,
+                overflow: 'hidden',
+                marginTop: 8
+              }}>
+                <div style={{ width: '68%', height: '100%', background: 'var(--color-primary)' }}></div>
+              </div>
+            </div>
+
+            <div style={{
+              background: 'var(--color-surface)',
+              padding: '16px',
+              borderRadius: '16px',
+              border: '1px solid var(--color-surface-container-high)'
+            }}>
+              <div style={{ fontSize: '11px', color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                Sprint Velocity
+              </div>
+              <div style={{ fontSize: '24px', fontWeight: 800, fontFamily: 'var(--font-headline)', color: 'var(--color-secondary)', marginTop: 4 }}>
+                {currentUser.kpis?.sprintVelocity || 94}%
+              </div>
+              <div style={{ fontSize: '11px', color: 'var(--color-on-surface-variant)', marginTop: 8 }}>
+                ↑ 3.2% vs sprint average
+              </div>
+            </div>
+          </div>
+
+          {/* Craft Skills */}
+          <div>
+            <div style={{ fontSize: '11px', color: 'var(--color-on-surface-variant)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '8px' }}>
+              Specialist Craft Competencies
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+              {(currentUser.skills || ['WebGL Shaders', 'Three.js Core', 'GLSL Optimization']).map((skill, idx) => (
+                <span
+                  key={idx}
+                  style={{
+                    background: 'var(--color-surface-container-low)',
+                    border: '1px solid var(--color-surface-container-high)',
+                    padding: '4px 10px',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    color: 'var(--color-on-surface)',
+                    fontWeight: 500
+                  }}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Studio Enclave Status */}
+          <div style={{
+            background: '#0a0a0a',
+            color: '#ffffff',
+            borderRadius: '16px',
+            padding: '16px',
+            marginTop: 'auto'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 6 }}>
+              <span style={{ fontSize: '11px', letterSpacing: '0.05em', color: '#ffb2b7', textTransform: 'uppercase', fontWeight: 600 }}>
+                HARDWARE MESH LINK
+              </span>
+              <span style={{ fontSize: '11px', color: '#10b981' }}>● ENCRYPTED</span>
+            </div>
+            <div style={{ fontSize: '13px', color: 'rgba(255, 255, 255, 0.85)' }}>
+              Connected to <strong>{currentUser.hub || 'Pier 14 Studio Waterfront'}</strong> via WireGuard Hardware Enclave.
+            </div>
+          </div>
         </div>
       </div>
     </div>

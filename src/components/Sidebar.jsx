@@ -36,7 +36,6 @@ export const Sidebar = () => {
           {/* Top Brand Header Block */}
           <div className="sidebar-brand-row">
             <div className="sidebar-brand-left">
-              <div className="sidebar-ca-badge">CA</div>
               <div className="sidebar-brand-text">
                 <span className="brand-title">CYBER ALIENS</span>
                 <span className="brand-subtitle">STUDIO PLATFORM</span>
@@ -49,7 +48,7 @@ export const Sidebar = () => {
           </div>
 
           {/* Navigation Links List */}
-          {currentRole === 'ADMIN' ? (
+          {currentRole === 'ADMIN' || currentRole === 'OPERATIONS' || currentRole === 'CREATIVE' ? (
             <nav className="sidebar-nav-list">
               <NavLink
                 to="/admin/mission-control"

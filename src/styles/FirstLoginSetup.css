@@ -1,62 +1,94 @@
-/* First Login Setup Wizard Screen Styles */
+/* First Login Setup Wizard Dual-Card Design System */
+/* Follows identical aesthetic as PlatformLogin */
 
-.wizard-container {
-  width: 100%;
-  max-width: 600px;
-  background-color: var(--color-primary);
-  color: #ffffff;
-  border-radius: var(--radius-xl);
-  padding: var(--space-2xl) var(--space-xl);
-  box-shadow: var(--shadow-prominent);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  position: relative;
-  z-index: 10;
-}
-
-.wizard-steps-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: var(--space-md);
-}
-
-.wizard-step-item {
+.setup-wizard-steps-bar {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
-  color: var(--color-primary-fixed-dim);
+  margin-bottom: 24px;
+  background-color: #FAF9F5;
+  border: 1px solid #ECEAE1;
+  border-radius: 999px;
+  padding: 6px 12px;
 }
 
-.wizard-step-item.active {
+.setup-step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #777770;
+  padding: 4px 10px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.setup-step-pill.active {
+  background-color: #000000;
   color: #ffffff;
   font-weight: 700;
 }
 
-.wizard-step-num {
-  width: 22px;
-  height: 22px;
+.setup-step-num {
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: var(--color-primary-container);
-  display: flex;
+  background-color: rgba(0, 0, 0, 0.08);
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: 800;
 }
 
-.wizard-step-item.active .wizard-step-num {
-  background: var(--color-secondary);
+.setup-step-pill.active .setup-step-num {
+  background-color: #B90538;
   color: #ffffff;
 }
 
-.wizard-content-box {
-  background-color: var(--color-primary-container);
-  border-radius: var(--radius-lg);
-  padding: var(--space-lg);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.setup-box-card {
+  background-color: #F4F3EE;
+  border: 1px solid #E8E6DF;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
+.setup-avatar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.setup-avatar-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #000000;
+}
+
+.setup-geofence-spec {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #E8E6DF;
+}
+
+.setup-enclave-box {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 28px 20px;
+  border-radius: 18px;
+  border: 1px solid #E8E6DF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
