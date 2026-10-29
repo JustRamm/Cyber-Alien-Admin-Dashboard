@@ -33,13 +33,14 @@ export const Sidebar = () => {
       )}
       <aside className={`sidebar-container ${isSidebarMobileOpen ? 'open' : ''}`}>
         <div className="sidebar-top-section">
-          {/* Top Brand Header Block */}
+          {/* Top Brand Header Block: Uses official brand-logo.png for all user types */}
           <div className="sidebar-brand-row">
             <div className="sidebar-brand-left">
-              <div className="sidebar-brand-text">
-                <span className="brand-title">CYBER ALIENS</span>
-                <span className="brand-subtitle">STUDIO PLATFORM</span>
-              </div>
+              <img
+                src="/brand-logo.png"
+                alt="Cyber Aliens"
+                className="sidebar-brand-logo-img"
+              />
             </div>
             <div className="sidebar-live-badge">
               <span className="live-dot pulse"></span>
@@ -227,7 +228,11 @@ export const Sidebar = () => {
         <div className="sidebar-user-capsule">
           <div className="capsule-user-left">
             <div className="capsule-avatar-wrap">
-              <span className="material-symbols-outlined capsule-person-icon">person</span>
+              <img
+                src={currentUser.avatar}
+                alt={currentUser.name}
+                className="capsule-avatar-img"
+              />
               <span className="capsule-status-dot"></span>
             </div>
             <div className="capsule-user-text">

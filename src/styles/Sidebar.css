@@ -48,6 +48,15 @@
   padding-left: 2px;
 }
 
+.sidebar-brand-logo-img {
+  max-height: 28px;
+  max-width: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
 .sidebar-brand-text {
   display: flex;
   flex-direction: column;
@@ -177,14 +186,23 @@
 
 .capsule-avatar-wrap {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background-color: #dedcd8;
+  background-color: #1a1a1a;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  overflow: visible;
+}
+
+.capsule-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
 }
 
 .capsule-person-icon {
