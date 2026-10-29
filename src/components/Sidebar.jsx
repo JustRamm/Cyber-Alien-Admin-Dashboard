@@ -11,13 +11,8 @@ export const Sidebar = () => {
     currentPreset,
     isSidebarMobileOpen,
     setIsSidebarMobileOpen,
-    tasks,
-    inquiries,
     logout
   } = useApp();
-
-  const pendingInquiriesCount = inquiries.length;
-  const activeTasksCount = tasks.filter(t => t.status === 'IN_PROGRESS').length;
 
   const closeSidebarMobile = () => {
     if (setIsSidebarMobileOpen) {
@@ -37,214 +32,224 @@ export const Sidebar = () => {
         <div className="sidebar-backdrop" onClick={closeSidebarMobile}></div>
       )}
       <aside className={`sidebar-container ${isSidebarMobileOpen ? 'open' : ''}`}>
-        <div className="sidebar-content">
-          {/* Brand & Node telemetry */}
-          <div className="sidebar-brand-block">
-            <div className="brand-logo-wrap">
-              <img src="/brand-logo.png" alt="Brand Logo" className="sidebar-brand-logo" />
+        <div className="sidebar-top-section">
+          {/* Top Brand Header Block */}
+          <div className="sidebar-brand-row">
+            <div className="sidebar-brand-left">
+              <div className="sidebar-ca-badge">CA</div>
+              <div className="sidebar-brand-text">
+                <span className="brand-title">CYBER ALIENS</span>
+                <span className="brand-subtitle">STUDIO PLATFORM</span>
+              </div>
             </div>
-            <span className="brand-subtitle">
-              // {currentRole === 'ADMIN' ? 'ADMIN CORE' : 'SPECIALIST PORTAL'}
-            </span>
+            <div className="sidebar-live-badge">
+              <span className="live-dot pulse"></span>
+              <span>LIVE</span>
+            </div>
           </div>
 
-          <div className="system-node-pill">
-            <span className="material-symbols-outlined node-pulse-icon">sensors</span>
-            <span className="node-label">SYS_ONLINE // SFO NODE 01</span>
-          </div>
-
-          {/* Nav Links */}
+          {/* Navigation Links List */}
           {currentRole === 'ADMIN' ? (
-            <nav className="sidebar-nav">
-              <div className="nav-section-title">COMMAND SUITE</div>
+            <nav className="sidebar-nav-list">
               <NavLink
                 to="/admin/mission-control"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeSidebarMobile}
               >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">grid_view</span>
-                  <span>Mission Control</span>
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">grid_view</span>
+                  <span className="nav-item-label">Dashboard</span>
                 </div>
+                <span className="nav-active-dot"></span>
               </NavLink>
 
               <NavLink
-                to="/admin/attendance"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
+                to="/portal/tasks"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeSidebarMobile}
               >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">location_on</span>
-                  <span>Attendance & Radar</span>
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">grid_on</span>
+                  <span className="nav-item-label">Projects</span>
                 </div>
+                <span className="nav-active-dot"></span>
               </NavLink>
 
               <NavLink
                 to="/admin/operations"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeSidebarMobile}
               >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">tune</span>
-                  <span>Studio Operations</span>
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">mark_email_unread</span>
+                  <span className="nav-item-label">Proposals & Inquiries</span>
                 </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/admin/attendance"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">account_balance_wallet</span>
+                  <span className="nav-item-label">Financials & Invoices</span>
+                </div>
+                <span className="nav-active-dot"></span>
               </NavLink>
 
               <NavLink
                 to="/admin/personnel"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeSidebarMobile}
               >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">badge</span>
-                  <span>Personnel Directory</span>
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">supervised_user_circle</span>
+                  <span className="nav-item-label">Team & Velocity</span>
                 </div>
-              </NavLink>
-
-              <div className="nav-section-title">WORKFLOWS & SPRINT</div>
-              <NavLink
-                to="/portal/tasks"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">assignment</span>
-                  <span>Tasks & Sprint Board</span>
-                </div>
-                <span className="nav-badge">{activeTasksCount}</span>
-              </NavLink>
-
-              <NavLink
-                to="/admin/employee/emp-8821"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">admin_panel_settings</span>
-                  <span>Admin Control Spec</span>
-                </div>
-              </NavLink>
-
-              <div className="nav-section-title">SESSION</div>
-              <button
-                type="button"
-                className="nav-item-link sidebar-logout-action"
-                onClick={handleLogout}
-              >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon" style={{ color: 'var(--color-secondary)' }}>logout</span>
-                  <span style={{ color: 'var(--color-secondary)', fontWeight: 600 }}>Logout</span>
-                </div>
-              </button>
-            </nav>
-          ) : (
-            <nav className="sidebar-nav">
-              <div className="nav-section-title">SPECIALIST WORKSPACE</div>
-              <NavLink
-                to="/portal/home"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">home</span>
-                  <span>Specialist Hub & Clock</span>
-                </div>
-              </NavLink>
-
-              <NavLink
-                to="/portal/attendance"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">schedule</span>
-                  <span>Timesheets & Punches</span>
-                </div>
-              </NavLink>
-
-              <NavLink
-                to="/portal/tasks"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">view_kanban</span>
-                  <span>My Tasks & Sprint</span>
-                </div>
-                <span className="nav-badge">{activeTasksCount}</span>
-              </NavLink>
-
-              <NavLink
-                to="/portal/leaves"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
-                onClick={closeSidebarMobile}
-              >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">event_available</span>
-                  <span>Leave & Time-Off</span>
-                </div>
+                <span className="nav-active-dot"></span>
               </NavLink>
 
               <NavLink
                 to="/portal/profile"
-                className={({ isActive }) => `nav-item-link ${isActive ? 'active' : ''}`}
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
                 onClick={closeSidebarMobile}
               >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon">psychology</span>
-                  <span>Profile & Skill KPIs</span>
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">inventory_2</span>
+                  <span className="nav-item-label">Assets & Deliverables</span>
                 </div>
+                <span className="nav-active-dot"></span>
               </NavLink>
 
-              <div className="nav-section-title">SESSION</div>
-              <button
-                type="button"
-                className="nav-item-link sidebar-logout-action"
-                onClick={handleLogout}
+              <NavLink
+                to="/admin/employee/emp-8821"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
               >
-                <div className="nav-link-left">
-                  <span className="material-symbols-outlined nav-icon" style={{ color: 'var(--color-secondary)' }}>logout</span>
-                  <span style={{ color: 'var(--color-secondary)', fontWeight: 600 }}>Logout</span>
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">tune</span>
+                  <span className="nav-item-label">Settings</span>
                 </div>
-              </button>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+            </nav>
+          ) : (
+            <nav className="sidebar-nav-list">
+              <NavLink
+                to="/portal/home"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">grid_view</span>
+                  <span className="nav-item-label">Dashboard</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/portal/tasks"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">grid_on</span>
+                  <span className="nav-item-label">Projects</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/portal/attendance"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">account_balance_wallet</span>
+                  <span className="nav-item-label">Timesheets & Punches</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/portal/leaves"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">mark_email_unread</span>
+                  <span className="nav-item-label">Leave & Time-Off</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/admin/personnel"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">supervised_user_circle</span>
+                  <span className="nav-item-label">Team & Velocity</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/portal/profile"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">inventory_2</span>
+                  <span className="nav-item-label">Assets & Deliverables</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
+
+              <NavLink
+                to="/setup-wizard"
+                className={({ isActive }) => `sidebar-nav-item ${isActive ? 'active' : ''}`}
+                onClick={closeSidebarMobile}
+              >
+                <div className="nav-item-content">
+                  <span className="material-symbols-outlined nav-item-icon">tune</span>
+                  <span className="nav-item-label">Settings</span>
+                </div>
+                <span className="nav-active-dot"></span>
+              </NavLink>
             </nav>
           )}
         </div>
 
-        {/* Footer profile */}
-        <div className="sidebar-footer-card">
-          <div className="user-profile-row">
-            <div className="user-avatar-wrap">
-              <img src={currentUser.avatar} alt={currentUser.name} className="user-avatar-img" />
-              <div style={{ overflow: 'hidden' }}>
-                <div className="user-name-text">{currentUser.name}</div>
-                <div className="user-role-badge">
-                  {currentPreset?.roleTitle || currentUser.title}
-                </div>
+        {/* Bottom Profile Capsule Card (matching screenshot) */}
+        <div className="sidebar-user-capsule">
+          <div className="capsule-user-left">
+            <div className="capsule-avatar-wrap">
+              <span className="material-symbols-outlined capsule-person-icon">person</span>
+              <span className="capsule-status-dot"></span>
+            </div>
+            <div className="capsule-user-text">
+              <div className="capsule-user-name">{currentUser.name}</div>
+              <div className="capsule-user-title">
+                {currentPreset?.roleTitle ? currentPreset.roleTitle.split('&')[0].trim() : (currentUser.title || 'Studio Principal')}
               </div>
             </div>
-            <button
-              type="button"
-              className="sidebar-quick-logout-btn"
-              onClick={handleLogout}
-              title="Logout / Terminate Session"
-              aria-label="Logout"
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>logout</span>
-            </button>
           </div>
 
-          <div className="sidebar-tier-pill">
-            <span className="material-symbols-outlined" style={{ fontSize: '14px', color: 'var(--color-secondary)' }}>
-              verified_user
-            </span>
-            <span style={{ fontSize: '10px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-              {currentPreset?.tier || 'AUTHORIZED OPERATIVE'}
-            </span>
-          </div>
+          <button
+            type="button"
+            className="capsule-action-btn"
+            onClick={handleLogout}
+            title="Switch Persona / Logout"
+            aria-label="Switch Persona / Logout"
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>swap_horiz</span>
+          </button>
         </div>
       </aside>
     </>
   );
 };
-

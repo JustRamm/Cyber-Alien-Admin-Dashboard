@@ -71,7 +71,8 @@
   --shadow-coral-glow: 0 0 24px rgba(185, 5, 56, 0.35);
 
   /* Layout */
-  --sidebar-width: 280px;
+  --sidebar-width: 260px;
+  --sidebar-inset: 16px;
   --header-height: 70px;
 }
 

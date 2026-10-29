@@ -3,7 +3,7 @@
 .header-container {
   position: fixed;
   top: 0;
-  left: var(--sidebar-width);
+  left: calc(var(--sidebar-width) + (var(--sidebar-inset) * 2));
   right: 0;
   height: var(--header-height);
   background-color: rgba(250, 249, 245, 0.88);

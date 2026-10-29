@@ -107,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .main-content-layout {
   flex: 1;
-  margin-left: var(--sidebar-width);
+  margin-left: calc(var(--sidebar-width) + (var(--sidebar-inset) * 2));
   min-height: 100vh;
   display: flex;
   flex-direction: column;
