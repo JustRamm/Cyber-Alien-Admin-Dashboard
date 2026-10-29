@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import '../styles/Header.css';
@@ -7,6 +7,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const {
     currentUser,
+    currentPreset,
     studioStats,
     isClockedIn,
     setClockInModalOpen,
@@ -17,6 +18,18 @@ export const Header = () => {
   } = useApp();
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setProfileDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const toggleMobileSidebar = () => {
     setIsSidebarMobileOpen(!isSidebarMobileOpen);
@@ -76,7 +89,7 @@ export const Header = () => {
         </form>
       </div>
 
-      {/* Right side: Clock-in CTA, Notifications, Profile Avatar */}
+      {/* Right side: Clock-in CTA, Notifications, Profile Avatar Dropdown */}
       <div className="header-right">
         <button
           type="button"
@@ -100,18 +113,55 @@ export const Header = () => {
           <span className="notification-dot"></span>
         </button>
 
-        <button
-          type="button"
-          className="header-logout-btn"
-          onClick={handleLogout}
-          title={`Logout (${currentUser.name})`}
-          aria-label="Logout"
-        >
-          <span className="material-symbols-outlined logout-icon">logout</span>
-          <span className="logout-text">LOGOUT</span>
-        </button>
+        {/* Clean Profile Menu (No redundant text LOGOUT button) */}
+        <div className="header-profile-menu-container" ref={dropdownRef}>
+          <button
+            type="button"
+            className="header-avatar-btn"
+            onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+            title={`${currentUser.name} (${currentPreset?.roleTitle || currentUser.title})`}
+            aria-label="User Profile Menu"
+          >
+            <img src={currentUser.avatar} alt={currentUser.name} className="header-avatar-img" />
+          </button>
+
+          {profileDropdownOpen && (
+            <div className="header-profile-dropdown">
+              <div className="dropdown-user-header">
+                <img src={currentUser.avatar} alt={currentUser.name} className="dropdown-avatar-img" />
+                <div className="dropdown-user-info">
+                  <div className="dropdown-user-name">{currentUser.name}</div>
+                  <div className="dropdown-user-role">{currentPreset?.roleTitle || currentUser.title}</div>
+                  <div className="dropdown-user-node">{currentUser.node}</div>
+                </div>
+              </div>
+              <div className="dropdown-divider"></div>
+              <button
+                type="button"
+                className="dropdown-item"
+                onClick={() => {
+                  setProfileDropdownOpen(false);
+                  navigate('/portal/profile');
+                }}
+              >
+                <span className="material-symbols-outlined dropdown-icon">badge</span>
+                <span>View Profile & KPIs</span>
+              </button>
+              <button
+                type="button"
+                className="dropdown-item danger"
+                onClick={() => {
+                  setProfileDropdownOpen(false);
+                  handleLogout();
+                }}
+              >
+                <span className="material-symbols-outlined dropdown-icon">logout</span>
+                <span>Sign Out</span>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
 };
-
