@@ -3,7 +3,14 @@ import { useApp } from '../context/AppContext';
 import '../styles/TasksSprintBoard.css';
 
 export const TasksSprintBoard = () => {
-  const { tasks, updateTaskStatus, showToast } = useApp();
+  const {
+    tasks,
+    projects,
+    updateTaskStatus,
+    setIsNewTaskModalOpen,
+    setIsNewProjectModalOpen,
+    showToast
+  } = useApp();
   const [projectFilter, setProjectFilter] = useState('ALL');
 
   const filteredTasks = tasks.filter(t => {
@@ -47,26 +54,35 @@ export const TasksSprintBoard = () => {
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
           <select
             value={projectFilter}
             onChange={(e) => setProjectFilter(e.target.value)}
             style={{ padding: '8px 14px', borderRadius: 'var(--radius-full)', border: '1px solid var(--color-outline-variant)', background: 'var(--color-surface-container-low)', fontSize: '13px' }}
           >
-            <option value="ALL">All Projects ({tasks.length})</option>
-            <option value="Project Obsidian">Project Obsidian</option>
-            <option value="STARLET 5.0">STARLET 5.0</option>
-            <option value="Neo-Kinetic Studio">Neo-Kinetic Studio</option>
-            <option value="Chrono Vault">Chrono Vault</option>
-            <option value="Hyperion Audio">Hyperion Audio</option>
+            <option value="ALL">All Projects ({tasks.length} tasks)</option>
+            {projects.map(p => (
+              <option key={p.id} value={p.title}>{p.title}</option>
+            ))}
           </select>
 
           <button
             type="button"
-            className="btn-primary"
-            onClick={() => showToast('New task creation modal opened', 'info')}
+            className="btn-ghost"
+            onClick={() => setIsNewProjectModalOpen(true)}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>create_new_folder</span>
+            <span>+ New Project</span>
+          </button>
+
+          <button
+            type="button"
+            className="btn-primary"
+            onClick={() => setIsNewTaskModalOpen(true)}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add_task</span>
             <span>+ New Task</span>
           </button>
         </div>

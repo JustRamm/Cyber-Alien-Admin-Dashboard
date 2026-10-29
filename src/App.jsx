@@ -5,6 +5,8 @@ import { AppRoutes } from './routes/AppRoutes';
 import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { ClockInModal } from './components/ClockInModal';
+import { NewTaskModal } from './components/NewTaskModal';
+import { NewProjectModal } from './components/NewProjectModal';
 import './styles/global.css';
 import './styles/responsive.css';
 
@@ -50,6 +52,10 @@ const AppLayout = () => {
 
       {/* Global Interactive Clock-In Verification Modal */}
       <ClockInModal />
+
+      {/* Global Interactive Task & Project Creation Modals */}
+      <NewTaskModal />
+      <NewProjectModal />
 
       {isAuthRoute ? (
         <main>

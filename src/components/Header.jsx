@@ -14,17 +14,26 @@ export const Header = () => {
     isSidebarMobileOpen,
     setIsSidebarMobileOpen,
     showToast,
+    notifications,
+    unreadNotificationsCount,
+    markNotificationAsRead,
+    markAllNotificationsAsRead,
     logout
   } = useApp();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const notifRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setProfileDropdownOpen(false);
+      }
+      if (notifRef.current && !notifRef.current.contains(event.target)) {
+        setNotificationsOpen(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -103,15 +112,80 @@ export const Header = () => {
           <span>{isClockedIn ? 'Geofence Active' : 'Punch Clock-In'}</span>
         </button>
 
-        <button
-          type="button"
-          className="notifications-trigger"
-          onClick={() => showToast('Studio Matrix Alert: 3 incoming RFPs awaiting review', 'info')}
-          aria-label="Notifications"
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>notifications</span>
-          <span className="notification-dot"></span>
-        </button>
+        {/* Interactive Notifications Trigger & Flyout */}
+        <div className="header-notifications-container" ref={notifRef}>
+          <button
+            type="button"
+            className="notifications-trigger"
+            onClick={() => setNotificationsOpen(!notificationsOpen)}
+            aria-label="Notifications"
+            title={`${unreadNotificationsCount} unread studio notifications`}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>notifications</span>
+            {unreadNotificationsCount > 0 ? (
+              <span className="notification-count-badge">{unreadNotificationsCount}</span>
+            ) : (
+              <span className="notification-dot" style={{ backgroundColor: '#10b981' }}></span>
+            )}
+          </button>
+
+          {notificationsOpen && (
+            <div className="header-notifications-flyout">
+              <div className="notif-flyout-header">
+                <span className="notif-flyout-title">Notifications ({unreadNotificationsCount})</span>
+                {unreadNotificationsCount > 0 && (
+                  <button
+                    type="button"
+                    className="notif-flyout-mark-read"
+                    onClick={markAllNotificationsAsRead}
+                  >
+                    Mark all read
+                  </button>
+                )}
+              </div>
+
+              <div className="notif-flyout-list">
+                {notifications.slice(0, 4).map((notif) => (
+                  <div
+                    key={notif.id}
+                    className={`notif-flyout-item ${notif.unread ? 'unread' : ''}`}
+                    onClick={() => {
+                      markNotificationAsRead(notif.id);
+                      setNotificationsOpen(false);
+                      if (notif.actionRoute) {
+                        navigate(notif.actionRoute);
+                      } else {
+                        navigate('/notifications');
+                      }
+                    }}
+                  >
+                    <span className="material-symbols-outlined notif-flyout-icon">
+                      {notif.icon || 'notifications'}
+                    </span>
+                    <div className="notif-flyout-text">
+                      <span className="notif-flyout-item-title">{notif.title}</span>
+                      <span className="notif-flyout-item-time">{notif.timestamp} • {notif.category}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="notif-flyout-footer">
+                <button
+                  type="button"
+                  className="notif-flyout-view-all"
+                  style={{ background: 'none', border: 'none', width: '100%' }}
+                  onClick={() => {
+                    setNotificationsOpen(false);
+                    navigate('/notifications');
+                  }}
+                >
+                  View All in Notification Center →
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Clean Profile Menu (No redundant text LOGOUT button) */}
         <div className="header-profile-menu-container" ref={dropdownRef}>

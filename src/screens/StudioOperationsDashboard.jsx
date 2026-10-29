@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext';
 import '../styles/StudioOperationsDashboard.css';
 
 export const StudioOperationsDashboard = () => {
-  const { studioStats, projects, inquiries, showToast } = useApp();
+  const { studioStats, projects, inquiries, setIsNewProjectModalOpen, showToast } = useApp();
   const [selectedTimeline, setSelectedTimeline] = useState('Q1');
 
   return (
@@ -177,11 +177,20 @@ export const StudioOperationsDashboard = () => {
                 </div>
                 <h2 className="font-headline-sm" style={{ marginTop: '4px' }}>Active Client Engagements</h2>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span className="telemetry-chip">
                   <span style={{ width: 6, height: 6, borderRadius: '50%', backgroundColor: '#3b82f6' }}></span>
                   Live Deployment Sync
                 </span>
+                <button
+                  type="button"
+                  className="btn-primary"
+                  onClick={() => setIsNewProjectModalOpen(true)}
+                  style={{ padding: '6px 14px', fontSize: '12px' }}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>add</span>
+                  <span>+ New Project</span>
+                </button>
               </div>
             </div>
 

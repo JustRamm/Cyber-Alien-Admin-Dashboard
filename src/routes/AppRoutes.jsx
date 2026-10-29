@@ -20,6 +20,7 @@ import { AttendanceTimesheets } from '../screens/AttendanceTimesheets';
 import { LeaveManagement } from '../screens/LeaveManagement';
 import { EmployeeProfileKPIs } from '../screens/EmployeeProfileKPIs';
 import { TasksSprintBoard } from '../screens/TasksSprintBoard';
+import { NotificationsCenter } from '../screens/NotificationsCenter';
 
 export const AppRoutes = () => {
   const { currentPreset, currentRole } = useApp();
@@ -50,6 +51,11 @@ export const AppRoutes = () => {
       <Route path="/portal/leaves" element={<LeaveManagement />} />
       <Route path="/portal/profile" element={<EmployeeProfileKPIs />} />
       <Route path="/portal/tasks" element={<TasksSprintBoard />} />
+
+      {/* Notifications Center */}
+      <Route path="/notifications" element={<NotificationsCenter />} />
+      <Route path="/admin/notifications" element={<NotificationsCenter />} />
+      <Route path="/portal/notifications" element={<NotificationsCenter />} />
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to={defaultLanding} replace />} />

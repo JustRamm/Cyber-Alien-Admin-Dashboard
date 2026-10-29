@@ -180,6 +180,143 @@
   background-color: var(--color-secondary);
 }
 
+/* Header Notifications Flyout */
+.header-notifications-container {
+  position: relative;
+}
+
+.notification-count-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #B90538;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(185, 5, 56, 0.4);
+}
+
+.header-notifications-flyout {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 340px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  animation: dropdownFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.notif-flyout-header {
+  padding: 14px 16px;
+  background-color: #FAF9F5;
+  border-bottom: 1px solid #ECEAE1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notif-flyout-title {
+  font-family: var(--font-headline);
+  font-size: 13px;
+  font-weight: 800;
+  color: #000000;
+}
+
+.notif-flyout-mark-read {
+  font-size: 11px;
+  font-weight: 700;
+  color: #B90538;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.notif-flyout-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.notif-flyout-item {
+  padding: 12px 16px;
+  border-bottom: 1px solid #F4F3EE;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.notif-flyout-item:hover {
+  background-color: #FAF9F5;
+}
+
+.notif-flyout-item.unread {
+  background-color: #FFFBFB;
+  border-left: 3px solid #B90538;
+}
+
+.notif-flyout-icon {
+  font-size: 18px;
+  color: #B90538;
+  margin-top: 2px;
+}
+
+.notif-flyout-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.notif-flyout-item-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #111110;
+}
+
+.notif-flyout-item-time {
+  font-size: 10.5px;
+  color: #888880;
+}
+
+.notif-flyout-footer {
+  padding: 10px 16px;
+  background-color: #FAF9F5;
+  border-top: 1px solid #ECEAE1;
+  text-align: center;
+}
+
+.notif-flyout-view-all {
+  font-family: var(--font-headline);
+  font-size: 12px;
+  font-weight: 800;
+  color: #000000;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.notif-flyout-view-all:hover {
+  color: #B90538;
+}
+
 .header-profile-menu-container {
   position: relative;
 }

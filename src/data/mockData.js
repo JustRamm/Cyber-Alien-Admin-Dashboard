@@ -539,3 +539,73 @@ export const PRESET_ROLES = [
   }
 ];
 
+export const INITIAL_NOTIFICATIONS = [
+  {
+    id: 'notif-1',
+    category: 'GEOFENCE',
+    title: 'Perimeter Breach Flagged',
+    description: 'Kenji Takahashi clocked in 3.4km outside Pier 14 Hub perimeter. Action required or manual clearance.',
+    timestamp: '8m ago',
+    unread: true,
+    severity: 'CRITICAL',
+    icon: 'warning',
+    actionRoute: '/admin/attendance'
+  },
+  {
+    id: 'notif-2',
+    category: 'INQUIRY',
+    title: 'New Commercial Proposal Received',
+    description: 'Aura Botanica submitted $80k–$120k scope for Rebrand & E-Commerce WebGL.',
+    timestamp: '25m ago',
+    unread: true,
+    severity: 'HIGH',
+    icon: 'mark_email_unread',
+    actionRoute: '/admin/operations'
+  },
+  {
+    id: 'notif-3',
+    category: 'SPRINT',
+    title: 'Milestone Review Ready',
+    description: 'Kaito Tanaka marked "Export 8K keyframes for Chrono Vault" as ready for review.',
+    timestamp: '1h ago',
+    unread: true,
+    severity: 'NORMAL',
+    icon: 'task_alt',
+    actionRoute: '/portal/tasks'
+  },
+  {
+    id: 'notif-4',
+    category: 'SYSTEM',
+    title: 'Node Latency Nominal',
+    description: 'SFO Pier 14 Mesh cluster operating at 14ms latency across 34 connected workstations.',
+    timestamp: '2h ago',
+    unread: false,
+    severity: 'LOW',
+    icon: 'dns',
+    actionRoute: '/admin/mission-control'
+  },
+  {
+    id: 'notif-5',
+    category: 'PERSONNEL',
+    title: 'Leave Request Pending Approval',
+    description: 'Elena Rostova submitted Annual Leave request for Mar 12–15 (3 days).',
+    timestamp: '4h ago',
+    unread: false,
+    severity: 'NORMAL',
+    icon: 'event',
+    actionRoute: '/portal/leaves'
+  },
+  {
+    id: 'notif-6',
+    category: 'SECURITY',
+    title: 'FIDO2 Hardware Passkey Synced',
+    description: 'Encrypted hardware enclave paired successfully for London Soho Node 02.',
+    timestamp: 'Yesterday',
+    unread: false,
+    severity: 'LOW',
+    icon: 'verified_user',
+    actionRoute: '/portal/profile'
+  }
+];
+
+

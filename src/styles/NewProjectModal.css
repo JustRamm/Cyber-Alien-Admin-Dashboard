@@ -1,0 +1,56 @@
+/* New Project Modal Styles */
+
+.discipline-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.discipline-tag-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background-color: #F4F3EE;
+  border: 1px solid #E8E6DF;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #333330;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.discipline-tag-chip:hover {
+  border-color: #000000;
+}
+
+.discipline-tag-chip.active {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+}
+
+.leads-selection-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lead-checkbox-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #F4F3EE;
+  border: 1px solid #E8E6DF;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.lead-checkbox-pill.active {
+  background-color: #000000;
+  border-color: #000000;
+  color: #ffffff;
+}

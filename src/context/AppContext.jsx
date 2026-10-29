@@ -6,7 +6,8 @@ import {
   INITIAL_INQUIRIES,
   INITIAL_TASKS,
   INITIAL_LEAVE_BALANCES,
-  PRESET_ROLES
+  PRESET_ROLES,
+  INITIAL_NOTIFICATIONS
 } from '../data/mockData';
 
 const AppContext = createContext(null);
@@ -21,11 +22,14 @@ export const AppProvider = ({ children }) => {
   const [inquiries, setInquiries] = useState(INITIAL_INQUIRIES);
   const [tasks, setTasks] = useState(INITIAL_TASKS);
   const [leaveBalances, setLeaveBalances] = useState(INITIAL_LEAVE_BALANCES);
+  const [notifications, setNotifications] = useState(INITIAL_NOTIFICATIONS);
 
-  // Clock-in state for interactive simulation
+  // Modals state
   const [isClockedIn, setIsClockedIn] = useState(true);
   const [clockInModalOpen, setClockInModalOpen] = useState(false);
   const [isSidebarMobileOpen, setIsSidebarMobileOpen] = useState(false);
+  const [isNewTaskModalOpen, setIsNewTaskModalOpen] = useState(false);
+  const [isNewProjectModalOpen, setIsNewProjectModalOpen] = useState(false);
 
   // Notification Banner
   const [toastMessage, setToastMessage] = useState(null);
@@ -139,6 +143,76 @@ export const AppProvider = ({ children }) => {
     showToast(`Personnel node added: ${newEmp.name} (${newEmp.code})`, 'success');
   };
 
+  const addTask = (newTaskData) => {
+    const newTask = {
+      id: `task-${Date.now()}`,
+      title: newTaskData.title,
+      project: newTaskData.project || 'Project Obsidian',
+      assignedTo: newTaskData.assignedTo || currentUser.name,
+      status: newTaskData.status || 'BACKLOG',
+      priority: newTaskData.priority || 'NORMAL',
+      estimateHours: Number(newTaskData.estimateHours) || 6,
+      loggedHours: 0,
+      description: newTaskData.description || ''
+    };
+    setTasks(prev => [newTask, ...prev]);
+    showToast(`Task assigned to ${newTask.assignedTo}: "${newTask.title}"`, 'success');
+    return newTask;
+  };
+
+  const addProject = (newProjData) => {
+    const newProj = {
+      id: `proj-${Date.now()}`,
+      title: newProjData.title,
+      client: newProjData.client || 'Commercial Client Inc.',
+      discipline: newProjData.discipline || 'WebGL & Shaders',
+      leads: Array.isArray(newProjData.leads) && newProjData.leads.length > 0 ? newProjData.leads : [currentUser.name.split(' ')[0] + ' ' + (currentUser.name.split(' ')[1]?.[0] ? currentUser.name.split(' ')[1][0] + '.' : '')],
+      progressPercent: Number(newProjData.progressPercent) || 5,
+      etaDate: newProjData.etaDate || 'End Q2',
+      status: newProjData.status || 'IN_PROGRESS',
+      health: newProjData.health || 'OPTIMAL',
+      budgetUSD: newProjData.budgetUSD || '$95,000',
+      description: newProjData.description || ''
+    };
+    setProjects(prev => [newProj, ...prev]);
+    setStudioStats(prev => ({
+      ...prev,
+      activeProjectsCount: prev.activeProjectsCount + 1
+    }));
+    showToast(`New project initialized: "${newProj.title}"`, 'success');
+    return newProj;
+  };
+
+  const unreadNotificationsCount = notifications.filter(n => n.unread).length;
+
+  const markNotificationAsRead = (id) => {
+    setNotifications(prev =>
+      prev.map(n => (n.id === id ? { ...n, unread: false } : n))
+    );
+  };
+
+  const markAllNotificationsAsRead = () => {
+    setNotifications(prev => prev.map(n => ({ ...n, unread: false })));
+    showToast('All notifications marked as read', 'info');
+  };
+
+  const clearAllNotifications = () => {
+    setNotifications([]);
+    showToast('Notification center cleared', 'info');
+  };
+
+  const addNotification = (newNotif) => {
+    const notif = {
+      id: `notif-${Date.now()}`,
+      timestamp: 'Just now',
+      unread: true,
+      severity: 'NORMAL',
+      icon: 'notifications',
+      ...newNotif
+    };
+    setNotifications(prev => [notif, ...prev]);
+  };
+
   const updateTaskStatus = (taskId, newStatus) => {
     setTasks(prev =>
       prev.map(task => (task.id === taskId ? { ...task, status: newStatus } : task))
@@ -166,9 +240,17 @@ export const AppProvider = ({ children }) => {
         employees,
         addEmployee,
         projects,
+        addProject,
         inquiries,
         tasks,
+        addTask,
         updateTaskStatus,
+        notifications,
+        unreadNotificationsCount,
+        markNotificationAsRead,
+        markAllNotificationsAsRead,
+        clearAllNotifications,
+        addNotification,
         leaveBalances,
         submitLeaveRequest,
         isClockedIn,
@@ -179,6 +261,10 @@ export const AppProvider = ({ children }) => {
         setClockInModalOpen,
         isSidebarMobileOpen,
         setIsSidebarMobileOpen,
+        isNewTaskModalOpen,
+        setIsNewTaskModalOpen,
+        isNewProjectModalOpen,
+        setIsNewProjectModalOpen,
         toastMessage,
         showToast
       }}
