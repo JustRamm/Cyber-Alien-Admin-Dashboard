@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useApp } from '../context/AppContext';
 
 // Auth Screens
 import { PlatformLogin } from '../screens/PlatformLogin';
@@ -21,10 +22,13 @@ import { EmployeeProfileKPIs } from '../screens/EmployeeProfileKPIs';
 import { TasksSprintBoard } from '../screens/TasksSprintBoard';
 
 export const AppRoutes = () => {
+  const { currentPreset, currentRole } = useApp();
+  const defaultLanding = currentPreset?.defaultRoute || (currentRole === 'ADMIN' ? '/admin/mission-control' : '/portal/home');
+
   return (
     <Routes>
       {/* Root & Defaults */}
-      <Route path="/" element={<Navigate to="/admin/mission-control" replace />} />
+      <Route path="/" element={<Navigate to={defaultLanding} replace />} />
       <Route path="/admin" element={<Navigate to="/admin/mission-control" replace />} />
       <Route path="/portal" element={<Navigate to="/portal/home" replace />} />
 
@@ -48,7 +52,7 @@ export const AppRoutes = () => {
       <Route path="/portal/tasks" element={<TasksSprintBoard />} />
 
       {/* Fallback */}
-      <Route path="*" element={<Navigate to="/admin/mission-control" replace />} />
+      <Route path="*" element={<Navigate to={defaultLanding} replace />} />
     </Routes>
   );
 };

@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext';
 import '../styles/EmployeeProfileKPIs.css';
 
 export const EmployeeProfileKPIs = () => {
-  const { currentUser, showToast } = useApp();
+  const { currentUser, currentPreset, showToast } = useApp();
 
   return (
     <div className="page-wrapper">
@@ -126,6 +126,67 @@ export const EmployeeProfileKPIs = () => {
                 Over 120 hours allocated to Junior Creative Code apprenticeships.
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Role Mandate, Responsibilities & Authorized Powers */}
+      <div className="profile-mandate-card" style={{ marginTop: 'var(--space-xl)', background: 'var(--color-primary)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-xl)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 'var(--space-lg)', flexWrap: 'wrap', gap: '8px' }}>
+          <div>
+            <span className="font-label-caps" style={{ color: 'var(--color-secondary)' }}>
+              OFFICIAL ROLE MANDATE & PRIVILEGES
+            </span>
+            <h2 className="font-headline-sm" style={{ color: '#ffffff', marginTop: 2 }}>
+              {currentPreset?.roleTitle || currentUser.title}
+            </h2>
+            <div style={{ color: 'var(--color-primary-fixed-dim)', fontSize: '12px', marginTop: 2 }}>
+              {currentPreset?.department || 'Studio Department'} • {currentPreset?.node || currentUser.node}
+            </div>
+          </div>
+          <span className="accuracy-pill" style={{ borderColor: 'var(--color-secondary)', color: 'var(--color-secondary)' }}>
+            {currentPreset?.tier || 'LEVEL 3 SPECIALIST'}
+          </span>
+        </div>
+
+        <div className="dossier-sections-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-md)' }}>
+          {/* Responsibilities */}
+          <div style={{ background: 'var(--color-primary-container)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#ffffff', fontWeight: '700', marginBottom: 'var(--space-sm)', fontSize: '13px' }}>
+              <span className="material-symbols-outlined" style={{ color: 'var(--color-secondary)', fontSize: '18px' }}>
+                task_alt
+              </span>
+              <span>Primary Job Responsibilities</span>
+            </div>
+            <ul style={{ margin: 0, paddingLeft: '18px', color: 'var(--color-primary-fixed-dim)', fontSize: '12px', lineHeight: 1.6 }}>
+              {(currentPreset?.responsibilities || [
+                'Execute daily craft development within assigned sprint projects',
+                'Maintain verified geofence attendance records at Pier 14 Studio HQ',
+                'Participate in weekly engineering design reviews and performance audits'
+              ]).map((resp, i) => (
+                <li key={i} style={{ marginBottom: 6 }}>{resp}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Authorized Powers */}
+          <div style={{ background: 'var(--color-primary-container)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 'var(--radius-md)', padding: 'var(--space-md)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#ffffff', fontWeight: '700', marginBottom: 'var(--space-sm)', fontSize: '13px' }}>
+              <span className="material-symbols-outlined" style={{ color: '#10B981', fontSize: '18px' }}>
+                verified_user
+              </span>
+              <span>Authorized Powers & Studio Capabilities</span>
+            </div>
+            <ul style={{ margin: 0, paddingLeft: '18px', color: '#ffffff', fontSize: '12px', lineHeight: 1.6 }}>
+              {(currentPreset?.powers || [
+                'Specialist Hub single-tap geofence clock-in & punch management',
+                'Sprint Kanban board access to update assigned ticket statuses',
+                'Timesheet and punch history ledger inspection',
+                'Submit PTO & leave requests with automated coverage suggestions'
+              ]).map((power, i) => (
+                <li key={i} style={{ marginBottom: 6 }}>{power}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

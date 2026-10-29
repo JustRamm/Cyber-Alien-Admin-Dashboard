@@ -203,6 +203,19 @@
   color: var(--color-on-primary-container);
 }
 
+.sidebar-tier-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  color: var(--color-primary-fixed);
+  font-weight: 700;
+  font-family: var(--font-body);
+}
+
 .role-switcher-btn {
   display: flex;
   align-items: center;

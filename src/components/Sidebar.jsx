@@ -8,7 +8,7 @@ export const Sidebar = () => {
   const {
     currentUser,
     currentRole,
-    toggleRole,
+    currentPreset,
     isSidebarMobileOpen,
     setIsSidebarMobileOpen,
     tasks,
@@ -211,15 +211,15 @@ export const Sidebar = () => {
           )}
         </div>
 
-        {/* Footer profile & Role Switcher */}
+        {/* Footer profile */}
         <div className="sidebar-footer-card">
           <div className="user-profile-row">
             <div className="user-avatar-wrap">
               <img src={currentUser.avatar} alt={currentUser.name} className="user-avatar-img" />
-              <div>
+              <div style={{ overflow: 'hidden' }}>
                 <div className="user-name-text">{currentUser.name}</div>
                 <div className="user-role-badge">
-                  {currentRole === 'ADMIN' ? 'SUPER ADMIN' : 'STAFF ARCHITECT'}
+                  {currentPreset?.roleTitle || currentUser.title}
                 </div>
               </div>
             </div>
@@ -234,15 +234,14 @@ export const Sidebar = () => {
             </button>
           </div>
 
-          <button
-            type="button"
-            className="role-switcher-btn"
-            onClick={toggleRole}
-            title="Click to toggle between Super Admin and Specialist view"
-          >
-            <span>Switch to {currentRole === 'ADMIN' ? 'Specialist View' : 'Admin Core'}</span>
-            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>swap_horiz</span>
-          </button>
+          <div className="sidebar-tier-pill">
+            <span className="material-symbols-outlined" style={{ fontSize: '14px', color: 'var(--color-secondary)' }}>
+              verified_user
+            </span>
+            <span style={{ fontSize: '10px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+              {currentPreset?.tier || 'AUTHORIZED OPERATIVE'}
+            </span>
+          </div>
         </div>
       </aside>
     </>

@@ -5,7 +5,8 @@ import {
   INITIAL_PROJECTS,
   INITIAL_INQUIRIES,
   INITIAL_TASKS,
-  INITIAL_LEAVE_BALANCES
+  INITIAL_LEAVE_BALANCES,
+  PRESET_ROLES
 } from '../data/mockData';
 
 const AppContext = createContext(null);
@@ -13,6 +14,7 @@ const AppContext = createContext(null);
 export const AppProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(INITIAL_EMPLOYEES[0]); // Alex Mercer
   const [currentRole, setCurrentRole] = useState('ADMIN'); // 'ADMIN' or 'SPECIALIST'
+  const [currentPreset, setCurrentPreset] = useState(PRESET_ROLES[0]);
   const [studioStats, setStudioStats] = useState(INITIAL_STUDIO_STATS);
   const [employees, setEmployees] = useState(INITIAL_EMPLOYEES);
   const [projects, setProjects] = useState(INITIAL_PROJECTS);
@@ -87,6 +89,22 @@ export const AppProvider = ({ children }) => {
     showToast('Secure session terminated. Redirecting to platform login...', 'info');
   };
 
+  const loginWithPreset = (presetIdOrEmail) => {
+    const foundPreset = PRESET_ROLES.find(
+      p => p.id === presetIdOrEmail || p.email.toLowerCase() === (presetIdOrEmail || '').toLowerCase()
+    ) || PRESET_ROLES[0];
+
+    const matchingEmp = employees.find(
+      e => e.id === foundPreset.employeeId || e.email.toLowerCase() === foundPreset.email.toLowerCase()
+    ) || employees[0];
+
+    setCurrentPreset(foundPreset);
+    setCurrentUser(matchingEmp);
+    setCurrentRole(foundPreset.role);
+    showToast(`Authenticated as ${foundPreset.name} // ${foundPreset.roleTitle}`, 'success');
+    return foundPreset;
+  };
+
   const addEmployee = (newEmpData) => {
     const newEmp = {
       id: `emp-${Date.now()}`,
@@ -139,6 +157,10 @@ export const AppProvider = ({ children }) => {
         setCurrentUser,
         currentRole,
         setCurrentRole,
+        currentPreset,
+        setCurrentPreset,
+        PRESET_ROLES,
+        loginWithPreset,
         toggleRole,
         studioStats,
         employees,

@@ -5,10 +5,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
   background-color: var(--color-surface);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .auth-background-grid {
@@ -20,13 +20,13 @@
   pointer-events: none;
 }
 
-.auth-monolith-card {
+.auth-workspace-container {
   width: 100%;
-  max-width: 460px;
+  max-width: 1120px;
   background-color: var(--color-primary);
   color: #ffffff;
   border-radius: var(--radius-xl);
-  padding: var(--space-2xl) var(--space-xl);
+  padding: var(--space-xl);
   box-shadow: var(--shadow-prominent);
   border: 1px solid rgba(255, 255, 255, 0.12);
   position: relative;
@@ -36,24 +36,25 @@
   gap: var(--space-lg);
 }
 
-.auth-header-block {
+.auth-header-bar {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-  text-align: center;
   align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: var(--space-md);
+  flex-wrap: wrap;
+  gap: var(--space-md);
 }
 
 .auth-brand-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: var(--space-xs);
+  gap: 12px;
 }
 
 .auth-brand-logo {
-  max-width: 220px;
-  max-height: 32px;
+  max-width: 200px;
+  max-height: 30px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -66,6 +67,239 @@
   font-weight: 700;
   letter-spacing: 0.12em;
   color: var(--color-secondary);
+}
+
+.auth-system-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  color: var(--color-on-surface-variant);
+}
+
+.auth-dual-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+/* Left: Roles Panel */
+.auth-roles-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.auth-panel-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.preset-roles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.preset-roles-list::-webkit-scrollbar {
+  width: 4px;
+}
+.preset-roles-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.preset-role-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-align: left;
+  color: #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+}
+
+.preset-role-card:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(2px);
+}
+
+.preset-role-card.active {
+  background-color: rgba(185, 5, 56, 0.14);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 16px rgba(185, 5, 56, 0.25);
+}
+
+.preset-role-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.preset-role-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.preset-role-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.preset-role-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.preset-tier-tag {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.preset-role-title {
+  font-size: 11px;
+  color: var(--color-primary-fixed-dim);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preset-role-dept {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 1px;
+}
+
+.preset-check-icon {
+  font-size: 20px;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+/* Dossier: Responsibilities & Powers */
+.selected-role-dossier {
+  background-color: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.dossier-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 8px;
+}
+
+.dossier-role-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+.dossier-route-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(185, 5, 56, 0.15);
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary-fixed);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.dossier-sections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.dossier-box {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  padding: 10px;
+}
+
+.dossier-box-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.dossier-list {
+  margin: 0;
+  padding-left: 14px;
+  font-size: 11px;
+  color: var(--color-primary-fixed-dim);
+  line-height: 1.45;
+}
+
+.dossier-list li {
+  margin-bottom: 5px;
+}
+
+.dossier-list.powers-list li {
+  color: #ffffff;
+}
+
+/* Right: Form Panel */
+.auth-form-panel {
+  background-color: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.auth-form-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .auth-form {
@@ -94,8 +328,9 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 12px 16px;
   border-radius: var(--radius-md);
-  font-size: 14px;
+  font-size: 13px;
   outline: none;
+  font-family: inherit;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -124,10 +359,11 @@
   background-color: var(--color-secondary);
   color: #ffffff;
   border: none;
-  padding: 14px;
+  padding: 13px;
   border-radius: var(--radius-full);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0.04em;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -144,12 +380,12 @@
 
 .auth-passkey-btn {
   width: 100%;
-  background-color: var(--color-primary-container);
+  background-color: rgba(255, 255, 255, 0.05);
   color: var(--color-primary-fixed);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 12px;
+  padding: 11px;
   border-radius: var(--radius-full);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -160,7 +396,7 @@
 }
 
 .auth-passkey-btn:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
 
@@ -185,3 +421,14 @@
   text-decoration: underline;
 }
 
+/* Responsive adjustments for the dual grid */
+@media (max-width: 960px) {
+  .auth-dual-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .dossier-sections-grid {
+    grid-template-columns: 1fr;
+  }
+}

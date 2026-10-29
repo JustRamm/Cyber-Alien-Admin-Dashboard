@@ -390,3 +390,142 @@ export const INITIAL_LEAVE_BALANCES = {
   sabbatical: { total: 5, used: 0, remaining: 5 }
 };
 
+export const PRESET_ROLES = [
+  {
+    id: 'super-admin',
+    employeeId: 'emp-8821',
+    name: 'Alex Mercer',
+    email: 'alex.mercer@cyberaliens.studio',
+    password: 'SuperAdminPass#2026',
+    role: 'ADMIN',
+    roleTitle: 'Studio Principal & Super Admin',
+    department: 'Executive Systems & Infrastructure',
+    node: 'SFO NODE 01 // PIER 14 HQ',
+    tier: 'LEVEL 5 ROOT PRIVILEGES',
+    badgeColor: '#B90538',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    defaultRoute: '/admin/mission-control',
+    responsibilities: [
+      'Oversee total studio occupancy, system latency, and multi-node cluster health.',
+      'Authorize annual production budgets ($348.5k) and commercial client contracts.',
+      'Manage global hardware allocation, cloud render clusters, and cryptographic keys.',
+      'Enforce geofence boundary parameters and review security breach escalations.'
+    ],
+    powers: [
+      'Full Administrative Root Access across all command suites',
+      'Geofence radius configuration & manual punch override authority',
+      'Employee onboarding, role tier elevation, and suspension protocol',
+      'Access to financial telemetry, client pipelines, and billing balance sheets'
+    ]
+  },
+  {
+    id: 'ops-lead',
+    employeeId: 'emp-9034',
+    name: 'Sarah Jenkins',
+    email: 'sarah.jenkins@cyberaliens.studio',
+    password: 'OpsPeopleLead#2026',
+    role: 'ADMIN',
+    roleTitle: 'Head of People & Operations',
+    department: 'People, Culture & Operations',
+    node: 'SFO NODE 01 // PIER 14 HQ',
+    tier: 'LEVEL 4 OPERATIONAL LEAD',
+    badgeColor: '#F59E0B',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80',
+    defaultRoute: '/admin/attendance',
+    responsibilities: [
+      'Monitor real-time punctuality adherence (94.8%) and daily studio punch audits.',
+      'Manage new operative onboarding dossiers, credential provisioning, and workstations.',
+      'Review and adjudicate employee leave applications and timesheet discrepancies.',
+      'Coordinate studio-wide staffing workloads and sprint capacity planning.'
+    ],
+    powers: [
+      'Full Attendance Command & Geolocation Radar supervision',
+      'Personnel Directory management and new employee provisioning drawer',
+      'Authority to approve or deny Leave & PTO requests across all departments',
+      'Timesheet discrepancy correction and timesheet export permissions'
+    ]
+  },
+  {
+    id: 'creative-director',
+    employeeId: 'emp-012',
+    name: 'Marcus Vance',
+    email: 'marcus.vance@cyberaliens.studio',
+    password: 'CreativeLead#2026',
+    role: 'ADMIN',
+    roleTitle: 'Creative Director & Sprint Lead',
+    department: '3D Motion & Spatial Computing',
+    node: 'LONDON NODE 02 // SOHO HUB',
+    tier: 'LEVEL 4 SPRINT LEAD',
+    badgeColor: '#8B5CF6',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    defaultRoute: '/portal/tasks',
+    responsibilities: [
+      'Direct visual art pipelines for Unreal Engine 5, Houdini simulations, and brand systems.',
+      'Manage 8 active commercial engagements (Obsidian, STARLET 5.0, Neo-Kinetic).',
+      'Prioritize sprint backlog tickets and allocate specialist craft resources.',
+      'Lead design critiques, milestone sign-offs, and quality assurance releases.'
+    ],
+    powers: [
+      'Tasks & Sprint Kanban Board master control (create, assign, reorder tickets)',
+      'Studio Operations Dashboard access to inspect client deliverables and win probabilities',
+      'Team resource craft allocation controls (WebGL, Shaders, 3D Motion)',
+      'Review and approve completed engineering milestones'
+    ]
+  },
+  {
+    id: 'webgl-engineer',
+    employeeId: 'emp-094',
+    name: 'Kenji Takahashi',
+    email: 'kenji.takahashi@cyberaliens.studio',
+    password: 'WebGLSpecialist#2026',
+    role: 'SPECIALIST',
+    roleTitle: 'Senior WebGL & Three.js Specialist',
+    department: 'Creative Engineering',
+    node: 'TOKYO NODE 03 // SHIBUYA',
+    tier: 'LEVEL 3 SPECIALIST OPERATIVE',
+    badgeColor: '#06B6D4',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+    defaultRoute: '/portal/home',
+    responsibilities: [
+      'Develop low-latency WebGL and WebGPU shader pipelines for browser installations.',
+      'Execute sprint tasks assigned across active commercial projects.',
+      'Complete daily geofence clock-in and punch telemetry verification.',
+      'Collaborate with Lead Architects on performance profiling and shader memory optimizations.'
+    ],
+    powers: [
+      'Specialist Hub single-tap geofence clock-in & punch management',
+      'Personal Sprint Kanban board access to update assigned ticket statuses',
+      'Timesheet and punch history ledger inspection',
+      'Submit PTO & leave requests with automated coverage suggestions',
+      'Personal Craft Radar & Skill KPI profile tracking'
+    ]
+  },
+  {
+    id: 'spatial-lead',
+    employeeId: 'emp-041',
+    name: 'Elena Rostova',
+    email: 'elena.rostova@cyberaliens.studio',
+    password: 'SpatialLead#2026',
+    role: 'SPECIALIST',
+    roleTitle: 'Senior UI/UX & Spatial Lead',
+    department: 'Design Systems & Spatial UI',
+    node: 'SFO NODE 01 // PIER 14 HQ',
+    tier: 'LEVEL 3 SPATIAL OPERATIVE',
+    badgeColor: '#10B981',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=300&q=80',
+    defaultRoute: '/portal/profile',
+    responsibilities: [
+      'Design spatial UI design tokens, micro-interactions, and VisionOS component kits.',
+      'Maintain design system token parity and procedural animation curves.',
+      'Log research hours and submit weekly timesheet reports.',
+      'Mentor junior designers and document spatial interaction standards.'
+    ],
+    powers: [
+      'Personal Profile & Craft Mastery KPI review (VisionOS, Figma Tokens, Shaders)',
+      'Specialist Geofence Hub verification and personal attendance logs',
+      'Submit and monitor leave balance allocations (Annual, Sabbatical)',
+      'Track and complete assigned sprint design deliverables'
+    ]
+  }
+];
+
