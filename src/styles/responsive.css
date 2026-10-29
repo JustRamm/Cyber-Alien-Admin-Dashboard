@@ -69,6 +69,10 @@
     display: flex !important;
   }
 
+  .header-mobile-brand {
+    display: flex !important;
+  }
+
   .header-telemetry-badge {
     display: none !important;
   }

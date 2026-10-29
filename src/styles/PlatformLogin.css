@@ -44,6 +44,30 @@
   align-items: center;
 }
 
+.auth-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--space-xs);
+}
+
+.auth-brand-logo {
+  max-width: 220px;
+  max-height: 32px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.auth-core-badge {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-secondary);
+}
+
 .auth-form {
   display: flex;
   flex-direction: column;

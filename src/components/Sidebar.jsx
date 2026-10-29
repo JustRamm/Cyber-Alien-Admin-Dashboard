@@ -40,9 +40,8 @@ export const Sidebar = () => {
         <div className="sidebar-content">
           {/* Brand & Node telemetry */}
           <div className="sidebar-brand-block">
-            <div className="brand-title-row">
-              <span className="brand-dot pulse"></span>
-              <span className="brand-text">CYBER ALIENS</span>
+            <div className="brand-logo-wrap">
+              <img src="/brand-logo.png" alt="Brand Logo" className="sidebar-brand-logo" />
             </div>
             <span className="brand-subtitle">
               // {currentRole === 'ADMIN' ? 'ADMIN CORE' : 'SPECIALIST PORTAL'}

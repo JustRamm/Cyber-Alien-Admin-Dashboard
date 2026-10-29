@@ -37,6 +37,19 @@
   color: var(--color-on-surface);
 }
 
+.header-mobile-brand {
+  display: none;
+  align-items: center;
+}
+
+.header-mobile-brand-img {
+  max-height: 22px;
+  max-width: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 .header-telemetry-badge {
   display: flex;
   align-items: center;

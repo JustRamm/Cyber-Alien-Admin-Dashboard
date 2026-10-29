@@ -47,6 +47,10 @@ export const Header = () => {
           <span className="material-symbols-outlined">menu</span>
         </button>
 
+        <div className="header-mobile-brand">
+          <img src="/brand-logo.png" alt="Brand Logo" className="header-mobile-brand-img" />
+        </div>
+
         <div className="header-telemetry-badge">
           <div className="telemetry-item">
             <span className="material-symbols-outlined telemetry-icon-red">satellite_alt</span>

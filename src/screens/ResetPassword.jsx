@@ -37,11 +37,9 @@ export const ResetPassword = () => {
 
       <div className="auth-monolith-card">
         <div className="auth-header-block">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span className="status-dot"></span>
-            <span className="font-label-caps" style={{ color: 'var(--color-secondary)' }}>
-              SECURITY & CREDENTIAL VAULT
-            </span>
+          <div className="auth-brand-row">
+            <img src="/brand-logo.png" alt="Brand Logo" className="auth-brand-logo" />
+            <span className="auth-core-badge">// RECOVERY VAULT</span>
           </div>
           <h1 className="font-headline-md" style={{ color: '#ffffff' }}>Passkey Recovery</h1>
           <p style={{ color: 'var(--color-primary-fixed-dim)', fontSize: '13px' }}>

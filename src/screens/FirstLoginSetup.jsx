@@ -16,7 +16,7 @@ export const FirstLoginSetup = () => {
     if (wizardStep < 3) {
       setWizardStep(wizardStep + 1);
     } else {
-      showToast('Node setup completed! Welcome to Cyber Aliens Studio Platform.', 'success');
+      showToast('Node setup completed! Welcome to Studio Platform.', 'success');
       setCurrentRole('ADMIN');
       navigate('/admin/mission-control');
     }
@@ -27,6 +27,10 @@ export const FirstLoginSetup = () => {
       <div className="auth-background-grid"></div>
 
       <div className="wizard-container">
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--space-md)' }}>
+          <img src="/brand-logo.png" alt="Brand Logo" style={{ maxHeight: 28, maxWidth: 200, objectFit: 'contain' }} />
+        </div>
+
         {/* Wizard Header */}
         <div className="wizard-steps-header">
           <div className={`wizard-step-item ${wizardStep === 1 ? 'active' : ''}`}>
@@ -124,7 +128,7 @@ export const FirstLoginSetup = () => {
                   style={{ accentColor: 'var(--color-secondary)', marginTop: 3 }}
                 />
                 <span>
-                  I authorize Cyber Aliens Studio to verify my device coordinates exclusively during active punch-in operations.
+                  I authorize the Studio to verify my device coordinates exclusively during active punch-in operations.
                 </span>
               </label>
             </div>

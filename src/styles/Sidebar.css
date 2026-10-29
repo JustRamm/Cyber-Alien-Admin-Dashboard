@@ -28,7 +28,23 @@
 .sidebar-brand-block {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+}
+
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  padding: 2px 0;
+}
+
+.sidebar-brand-logo {
+  max-width: 195px;
+  max-height: 28px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
 .brand-title-row {
