@@ -1,0 +1,62 @@
+/* First Login Setup Wizard Screen Styles */
+
+.wizard-container {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-xl);
+  box-shadow: var(--shadow-prominent);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  position: relative;
+  z-index: 10;
+}
+
+.wizard-steps-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: var(--space-md);
+}
+
+.wizard-step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--color-primary-fixed-dim);
+}
+
+.wizard-step-item.active {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.wizard-step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-primary-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.wizard-step-item.active .wizard-step-num {
+  background: var(--color-secondary);
+  color: #ffffff;
+}
+
+.wizard-content-box {
+  background-color: var(--color-primary-container);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+

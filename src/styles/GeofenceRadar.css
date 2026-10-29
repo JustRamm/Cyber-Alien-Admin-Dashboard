@@ -1,0 +1,283 @@
+/* Geofence Radar Component Styles */
+
+.geofence-radar-monolith {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.radar-hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  position: relative;
+  z-index: 10;
+  margin-bottom: var(--space-md);
+}
+
+.hud-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.geofence-pill-active {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-primary-container);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hud-coordinates {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--color-on-primary-container);
+}
+
+.hub-switcher-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: rgba(28, 27, 27, 0.9);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hub-switch-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-primary-fixed-dim);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hub-switch-btn.active {
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  box-shadow: 0 2px 8px rgba(220, 44, 79, 0.3);
+}
+
+.radar-hud-canvas {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background-color: #080808;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Grayscale map underlay */
+.radar-map-background {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#1c1b1b 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Concentric Geofence Rings */
+.ring-200m {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ring-150m-perimeter {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 2px solid rgba(185, 5, 56, 0.6);
+  background: radial-gradient(circle, rgba(185, 5, 56, 0.06) 0%, rgba(185, 5, 56, 0.14) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 40px rgba(185, 5, 56, 0.15);
+}
+
+.perimeter-tag {
+  position: absolute;
+  top: -12px;
+  background-color: var(--color-secondary);
+  color: var(--color-on-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ring-75m-core {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hub-center-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-secondary-container);
+  color: var(--color-on-secondary-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(220, 44, 79, 0.6);
+  z-index: 5;
+}
+
+/* Radar Sweep Line Animation */
+.radar-sweep-beam {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, rgba(185, 5, 56, 0.3) 0deg, transparent 60deg);
+  animation: radarSpin 7s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes radarSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Specialist Telemetry Pins */
+.specialist-pin {
+  position: absolute;
+  z-index: 20;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.specialist-pin:hover {
+  transform: scale(1.1);
+  z-index: 30;
+}
+
+.specialist-pin.alex {
+  top: 42%;
+  left: 45%;
+}
+
+.specialist-pin.sarah {
+  top: 32%;
+  left: 65%;
+}
+
+.specialist-pin.kenji-breach {
+  top: 15%;
+  right: 12%;
+}
+
+.pin-avatar-wrap {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.pin-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pin-status-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #10b981;
+  border: 1.5px solid #000000;
+}
+
+.pin-micro-label {
+  margin-top: 4px;
+  background-color: rgba(10, 10, 10, 0.95);
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.breach-alert-label {
+  background-color: var(--color-secondary-container) !important;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Corner HUD telemetry indicators */
+.hud-corner-top-left {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: rgba(28, 27, 27, 0.9);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.hud-corner-bottom-left {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background-color: rgba(28, 27, 27, 0.9);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+

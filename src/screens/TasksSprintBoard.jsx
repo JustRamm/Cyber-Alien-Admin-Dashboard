@@ -1,0 +1,143 @@
+import React, { useState } from 'react';
+import { useApp } from '../context/AppContext';
+import '../styles/TasksSprintBoard.css';
+
+export const TasksSprintBoard = () => {
+  const { tasks, updateTaskStatus, showToast } = useApp();
+  const [projectFilter, setProjectFilter] = useState('ALL');
+
+  const filteredTasks = tasks.filter(t => {
+    if (projectFilter !== 'ALL' && t.project !== projectFilter) return false;
+    return true;
+  });
+
+  const columns = [
+    { key: 'BACKLOG', label: 'Backlog Queue' },
+    { key: 'IN_PROGRESS', label: 'In Progress' },
+    { key: 'REVIEW', label: 'Review & QA' },
+    { key: 'DONE', label: 'Delivered / Done' }
+  ];
+
+  const moveTask = (taskId, direction) => {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    const colOrder = ['BACKLOG', 'IN_PROGRESS', 'REVIEW', 'DONE'];
+    const currentIndex = colOrder.indexOf(task.status);
+    const targetIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1;
+
+    if (targetIndex >= 0 && targetIndex < colOrder.length) {
+      updateTaskStatus(taskId, colOrder[targetIndex]);
+    }
+  };
+
+  return (
+    <div className="page-wrapper">
+      <div className="kanban-header-strip">
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span className="status-dot"></span>
+            <span className="font-label-caps" style={{ color: 'var(--color-secondary)' }}>
+              SPRINT CYCLE 09 // Q1 2026
+            </span>
+          </div>
+          <h1 className="font-headline-lg">Tasks & Sprint Board</h1>
+          <p style={{ color: 'var(--color-on-surface-variant)', fontSize: '15px' }}>
+            Active engineering sprints, shader milestones, and client review tickets.
+          </p>
+        </div>
+
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+          <select
+            value={projectFilter}
+            onChange={(e) => setProjectFilter(e.target.value)}
+            style={{ padding: '8px 14px', borderRadius: 'var(--radius-full)', border: '1px solid var(--color-outline-variant)', background: 'var(--color-surface-container-low)', fontSize: '13px' }}
+          >
+            <option value="ALL">All Projects ({tasks.length})</option>
+            <option value="Project Obsidian">Project Obsidian</option>
+            <option value="STARLET 5.0">STARLET 5.0</option>
+            <option value="Neo-Kinetic Studio">Neo-Kinetic Studio</option>
+            <option value="Chrono Vault">Chrono Vault</option>
+            <option value="Hyperion Audio">Hyperion Audio</option>
+          </select>
+
+          <button
+            type="button"
+            className="btn-primary"
+            onClick={() => showToast('New task creation modal opened', 'info')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
+            <span>+ New Task</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Kanban Board Grid */}
+      <div className="kanban-columns-grid">
+        {columns.map(col => {
+          const colTasks = filteredTasks.filter(t => t.status === col.key);
+          return (
+            <div key={col.key} className="kanban-col">
+              <div className="kanban-col-header">
+                <span className="kanban-col-title">{col.label}</span>
+                <span className="accuracy-pill" style={{ fontSize: '11px', padding: '2px 8px' }}>
+                  {colTasks.length}
+                </span>
+              </div>
+
+              {colTasks.map(task => (
+                <div key={task.id} className="kanban-card">
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span className="font-label-caps" style={{ color: 'var(--color-secondary)', fontSize: '10px' }}>
+                      {task.project}
+                    </span>
+                    <span
+                      className="accuracy-pill"
+                      style={{
+                        fontSize: '9px',
+                        padding: '2px 6px',
+                        background: task.priority === 'CRITICAL' ? 'var(--color-error-container)' : 'var(--color-surface-container)',
+                        color: task.priority === 'CRITICAL' ? 'var(--color-error)' : 'var(--color-on-surface)'
+                      }}
+                    >
+                      {task.priority}
+                    </span>
+                  </div>
+
+                  <div className="kanban-card-title">{task.title}</div>
+
+                  <div className="kanban-card-footer">
+                    <span>{task.assignedTo}</span>
+                    <div className="kanban-move-group">
+                      {col.key !== 'BACKLOG' && (
+                        <button
+                          type="button"
+                          className="kanban-move-btn"
+                          onClick={() => moveTask(task.id, 'prev')}
+                          title="Move Left"
+                        >
+                          <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>arrow_back</span>
+                        </button>
+                      )}
+                      {col.key !== 'DONE' && (
+                        <button
+                          type="button"
+                          className="kanban-move-btn"
+                          onClick={() => moveTask(task.id, 'next')}
+                          title="Move Right"
+                        >
+                          <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>arrow_forward</span>
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+

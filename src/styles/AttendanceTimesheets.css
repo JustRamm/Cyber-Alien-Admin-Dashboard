@@ -1,0 +1,25 @@
+/* Attendance Timesheets Screen Styles */
+
+.timesheet-kpi-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.timesheet-kpi-card {
+  background-color: var(--color-surface-container-lowest);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.timesheet-card-monolith {
+  background-color: var(--color-surface-container-lowest);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+

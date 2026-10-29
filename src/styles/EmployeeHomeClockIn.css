@@ -1,0 +1,120 @@
+/* Employee Home & Clock-In Hub Styles */
+
+.portal-welcome-strip {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.portal-clock-monolith {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-prominent);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.clock-monolith-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 500px;
+}
+
+.punch-live-timer {
+  font-family: var(--font-headline);
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: var(--space-xs) 0;
+}
+
+.punch-monolith-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.punch-main-action-btn {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-coral-glow);
+  transition: all 0.2s ease;
+}
+
+.punch-main-action-btn:hover {
+  background-color: var(--color-secondary-container);
+  transform: translateY(-2px);
+}
+
+.punch-break-btn {
+  background-color: var(--color-primary-container);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 14px 22px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.punch-break-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.portal-grid-two-col {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.portal-task-card {
+  background-color: var(--color-surface-container-lowest);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.portal-task-item {
+  background-color: var(--color-surface-container-low);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-sm);
+  transition: background-color 0.2s ease;
+}
+
+.portal-task-item:hover {
+  background-color: var(--color-surface-container);
+}
+

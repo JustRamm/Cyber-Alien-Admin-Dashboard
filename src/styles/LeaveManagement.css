@@ -1,0 +1,41 @@
+/* Leave Management Screen Styles */
+
+.leave-balances-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.leave-balance-card {
+  background-color: var(--color-surface-container-lowest);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.leave-layout-two-col {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.leave-form-card {
+  background-color: var(--color-surface-container-lowest);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.blackout-card {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-prominent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+

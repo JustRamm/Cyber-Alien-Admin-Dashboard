@@ -1,0 +1,172 @@
+/* Attendance & Geolocation Command Screen Styles */
+
+.attendance-cmd-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.attendance-cmd-header-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.attendance-view-controller {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-surface-container-high);
+  padding: 4px;
+  border-radius: var(--radius-full);
+}
+
+.attendance-view-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.attendance-view-btn.active {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Filter Console */
+.attendance-filter-console {
+  background-color: var(--color-surface-container-low);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  box-shadow: var(--shadow-subtle);
+}
+
+.filter-controls-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.date-range-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-surface-container-lowest);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-on-surface);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.filter-select {
+  appearance: none;
+  background-color: var(--color-surface-container-lowest);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 32px 8px 16px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* 4-Bento Metrics */
+.attendance-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.attendance-kpi-card {
+  background-color: var(--color-surface-container-lowest);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 160px;
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.attendance-kpi-card.breach-monolith {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Punch Ledger Table */
+.punch-ledger-monolith {
+  background-color: var(--color-surface-container-lowest);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-subtle);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  margin-top: var(--space-xl);
+}
+
+.punch-ledger-header {
+  padding: var(--space-lg) var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-surface-container-high);
+}
+
+.ledger-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.ledger-table th {
+  padding: 14px 20px;
+  background-color: var(--color-surface-container-low);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+  border-bottom: 1px solid var(--color-surface-container-high);
+}
+
+.ledger-table td {
+  padding: 14px 20px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--color-surface-container-low);
+}
+
+.ledger-table tr:hover {
+  background-color: rgba(244, 244, 240, 0.6);
+}
+

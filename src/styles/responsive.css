@@ -1,0 +1,167 @@
+/* Dedicated Responsive Stylesheet */
+/* Handles all breakpoint queries across Admin & Portal Views */
+
+/* 1. Large Displays (1200px to 1440px) */
+@media (max-width: 1400px) {
+  .page-wrapper {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+  
+  .bento-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* 2. Tablets & Laptops (992px to 1200px) */
+@media (max-width: 1200px) {
+  :root {
+    --sidebar-width: 250px;
+  }
+
+  .two-col-layout {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .split-radar-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 3. Small Tablets & Handhelds (768px to 992px) */
+@media (max-width: 992px) {
+  :root {
+    --sidebar-width: 0px;
+  }
+
+  .sidebar-container {
+    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px !important;
+    z-index: 1000;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sidebar-container.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: block !important;
+  }
+
+  .main-content-layout {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .header-container {
+    left: 0 !important;
+    padding-left: var(--space-md) !important;
+    padding-right: var(--space-md) !important;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+
+  .header-telemetry-badge {
+    display: none !important;
+  }
+
+  .header-search-box {
+    display: none !important;
+  }
+
+  .page-wrapper {
+    padding: calc(var(--header-height) + var(--space-md)) var(--space-md) var(--space-xl) var(--space-md);
+  }
+
+  .bento-metrics-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .table-responsive-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* 4. Mobile Devices (< 768px) */
+@media (max-width: 768px) {
+  .page-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: var(--space-md) !important;
+  }
+
+  .page-header-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .page-header-actions > * {
+    flex: 1 1 auto;
+  }
+
+  .font-display-xl {
+    font-size: 38px !important;
+  }
+
+  .font-headline-lg {
+    font-size: 26px !important;
+  }
+
+  .font-headline-md {
+    font-size: 22px !important;
+  }
+
+  .modal-dialog {
+    width: 95% !important;
+    padding: var(--space-md) !important;
+    margin: 10px auto;
+  }
+
+  .radar-hud-canvas {
+    height: 320px !important;
+  }
+
+  .auth-monolith-card {
+    padding: var(--space-lg) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .personnel-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .tasks-kanban-board {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 5. Micro Screens (< 480px) */
+@media (max-width: 480px) {
+  :root {
+    --header-height: 60px;
+  }
+
+  .page-wrapper {
+    padding: calc(var(--header-height) + 12px) 12px var(--space-lg) 12px;
+  }
+
+  .btn-primary, .btn-secondary, .btn-ghost {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .table-responsive-container table {
+    min-width: 600px;
+  }
+}
+
