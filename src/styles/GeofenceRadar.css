@@ -1,283 +1,380 @@
 /* Geofence Radar Component Styles */
+/* Replicates the exact tactical dark cartographic San Francisco radar */
 
 .geofence-radar-monolith {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  border-radius: var(--radius-xl);
-  padding: var(--space-lg);
+  background-color: #080808;
+  color: #ffffff;
+  border-radius: 28px;
+  padding: 20px 24px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 24px 64px -12px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.radar-hud-header {
+.geofence-radar-monolith.compact {
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.geofence-radar-monolith.compact .radar-hud-canvas {
+  height: 380px;
+}
+
+/* 1. Monolith Top Header */
+.radar-monolith-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--space-md);
+  gap: 16px;
   position: relative;
   z-index: 10;
-  margin-bottom: var(--space-md);
+  margin-bottom: 18px;
 }
 
-.hud-header-left {
+.monolith-header-left {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 16px;
   flex-wrap: wrap;
 }
 
-.geofence-pill-active {
+.monolith-geofence-pill {
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: var(--color-primary-container);
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 6px 14px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.hud-coordinates {
-  font-family: var(--font-body);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font-size: 11px;
   font-weight: 700;
+  color: #ffffff;
   letter-spacing: 0.06em;
-  color: var(--color-on-primary-container);
 }
 
-.hub-switcher-group {
+.monolith-geofence-pill .live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #b90538;
+  box-shadow: 0 0 8px #b90538;
+}
+
+.monolith-coords {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.monolith-hub-tabs {
   display: flex;
   align-items: center;
   gap: 4px;
-  background-color: rgba(28, 27, 27, 0.9);
+  background-color: #141414;
   padding: 4px;
-  border-radius: var(--radius-full);
+  border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.hub-switch-btn {
+.hub-tab-btn {
   background: transparent;
   border: none;
-  color: var(--color-primary-fixed-dim);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
+  color: rgba(255, 255, 255, 0.65);
+  padding: 6px 16px;
+  border-radius: 999px;
   font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.hub-switch-btn.active {
-  background-color: var(--color-secondary-container);
-  color: var(--color-on-secondary-container);
-  box-shadow: 0 2px 8px rgba(220, 44, 79, 0.3);
+.hub-tab-btn:hover {
+  color: #ffffff;
 }
 
+.hub-tab-btn.active {
+  background-color: #b90538;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(185, 5, 56, 0.4);
+}
+
+/* 2. Main Radar Map Canvas */
 .radar-hud-canvas {
   position: relative;
   width: 100%;
-  height: 420px;
-  background-color: #080808;
-  border-radius: var(--radius-lg);
+  height: 520px;
+  background-color: #080a0d;
+  border-radius: 20px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.8);
 }
 
-/* Grayscale map underlay */
-.radar-map-background {
+/* Cartographic SVG Map Underlay */
+.radar-sf-vector-map {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(#1c1b1b 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.25;
+  width: 100%;
+  height: 100%;
+  display: block;
   pointer-events: none;
 }
 
-/* Concentric Geofence Rings */
-.ring-200m {
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  border: 1px dashed rgba(255, 255, 255, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.ring-150m-perimeter {
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  border: 2px solid rgba(185, 5, 56, 0.6);
-  background: radial-gradient(circle, rgba(185, 5, 56, 0.06) 0%, rgba(185, 5, 56, 0.14) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  box-shadow: 0 0 40px rgba(185, 5, 56, 0.15);
-}
-
-.perimeter-tag {
+/* 3. Specialist Interactive Live Callouts */
+.specialist-callout-item {
   position: absolute;
-  top: -12px;
-  background-color: var(--color-secondary);
-  color: var(--color-on-secondary);
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.ring-75m-core {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.hub-center-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: var(--color-secondary-container);
-  color: var(--color-on-secondary-container);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 20px rgba(220, 44, 79, 0.6);
-  z-index: 5;
-}
-
-/* Radar Sweep Line Animation */
-.radar-sweep-beam {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, rgba(185, 5, 56, 0.3) 0deg, transparent 60deg);
-  animation: radarSpin 7s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes radarSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Specialist Telemetry Pins */
-.specialist-pin {
-  position: absolute;
-  z-index: 20;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.2s ease;
-}
-
-.specialist-pin:hover {
-  transform: scale(1.1);
+  gap: 8px;
   z-index: 30;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.specialist-pin.alex {
-  top: 42%;
-  left: 45%;
+.specialist-callout-item:hover {
+  transform: scale(1.08);
+  z-index: 45;
 }
 
-.specialist-pin.sarah {
-  top: 32%;
-  left: 65%;
-}
-
-.specialist-pin.kenji-breach {
-  top: 15%;
-  right: 12%;
-}
-
-.pin-avatar-wrap {
+.callout-avatar-wrap {
   position: relative;
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   border: 2px solid #ffffff;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+  flex-shrink: 0;
 }
 
-.pin-avatar-img {
+.callout-avatar-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.pin-status-badge {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #10b981;
-  border: 1.5px solid #000000;
-}
-
-.pin-micro-label {
-  margin-top: 4px;
-  background-color: rgba(10, 10, 10, 0.95);
+.callout-text-pill {
+  background-color: rgba(12, 12, 12, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   color: #ffffff;
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  font-size: 10px;
-  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
 }
 
-.breach-alert-label {
-  background-color: var(--color-secondary-container) !important;
-  color: #ffffff !important;
+.beacon-anchor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px #ffffff;
+  position: absolute;
+}
+
+.beacon-anchor-dot.alex-anchor {
+  top: 14px;
+  right: -12px;
+}
+
+.beacon-anchor-dot.sarah-anchor {
+  top: 14px;
+  right: -12px;
+}
+
+/* 4. Kenji Takahashi Breach Monolith Card (Exact from Image 1) */
+.breach-monolith-callout {
+  position: absolute;
+  z-index: 35;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 6px 18px rgba(185, 5, 56, 0.45));
+}
+
+.breach-monolith-callout:hover {
+  transform: scale(1.06);
+  z-index: 45;
+}
+
+.breach-card-top-row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  justify-content: space-between;
+  background-color: #b90538;
+  padding: 4px 10px 4px 4px;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
 }
 
-/* Corner HUD telemetry indicators */
-.hud-corner-top-left {
+.breach-avatar-frame {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.breach-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.breach-warning-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breach-label-pill {
+  background-color: #b90538;
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 0 0 16px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.beacon-anchor-dot.kenji-anchor {
+  bottom: -6px;
+  left: 20px;
+}
+
+/* 5. Top-Left HUD Real-Time GPS Trace Box */
+.hud-trace-box {
   position: absolute;
   top: 16px;
   left: 16px;
-  background-color: rgba(28, 27, 27, 0.9);
-  padding: 8px 14px;
-  border-radius: var(--radius-md);
-  font-size: 11px;
+  background-color: rgba(14, 14, 14, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 12px 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 25;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.hud-corner-bottom-left {
+.trace-tag-crimson {
+  font-size: 10px;
+  font-weight: 700;
+  color: #b90538;
+  letter-spacing: 0.06em;
+}
+
+.trace-variance-line {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.variance-val {
+  color: #b90538;
+  font-weight: 700;
+}
+
+.trace-mesh-line {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  font-family: var(--font-body);
+}
+
+/* 6. Bottom-Left HUD Bounds Summary Pill */
+.hud-bounds-summary-pill {
   position: absolute;
   bottom: 16px;
   left: 16px;
+  background-color: rgba(14, 14, 14, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 999px;
+  padding: 7px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  z-index: 25;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-  background-color: rgba(28, 27, 27, 0.9);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  font-size: 11px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
+.bounds-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot-active {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #b90538;
+  box-shadow: 0 0 8px #b90538;
+}
+
+.status-dot-alert {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #b90538;
+  box-shadow: 0 0 8px #b90538;
+}
+
+.bounds-separator {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 12px;
+}
+
+/* Responsive Radar Adjustments */
+@media (max-width: 768px) {
+  .radar-hud-canvas {
+    height: 420px;
+  }
+
+  .radar-monolith-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .monolith-hub-tabs {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .hud-trace-box {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+
+  .hud-bounds-summary-pill {
+    padding: 5px 12px;
+    font-size: 10px;
+  }
+}
